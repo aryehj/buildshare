@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   match("/", {
   		:controller => "application",
-  		:action => "explore",
+  		:action => "home",
   		:via => "get"
   			 }
   		)
