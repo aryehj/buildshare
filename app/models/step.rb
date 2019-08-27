@@ -11,4 +11,9 @@
 #
 
 class Step < ApplicationRecord
+
+	belongs_to :proposal
+	has_one :commitment, :dependent => :destroy
+	has_one :stakeholder, :dependent => :nullify
+
 end
