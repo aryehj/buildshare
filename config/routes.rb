@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+  # Explore routes
+  
+  match("/", {
+  		:controller => "application",
+  		:action => "explore",
+  		:via => "get"
+  			 }
+  		)
+
   # Routes for the Stakeholder resource:
 
   # CREATE
@@ -113,13 +122,6 @@ Rails.application.routes.draw do
   match("/delete_proposal/:route_proposal_id", { :controller => "proposals", :action => "destroy", :via => "get"})
 
   #------------------------------
-
-match("/", {
-    :controller => "application", 
-    :action => "welcome",
-    :via => "get"
-           }
-     )
   
   # ==============
   devise_for :admin_users, ActiveAdmin::Devise.config
