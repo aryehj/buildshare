@@ -1,0 +1,118 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all steps
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new step
+    </h2>
+
+    <form action="/insert_step" method="post">
+      <div class="form-group">
+        <label for="proposal_id">
+          Proposal
+        </label>
+
+        <input type="text" id="proposal_id" name="proposal_id" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="name">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="status">
+          Status
+        </label>
+
+        <input type="text" id="status" name="status" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create step
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Proposal
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Status
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @steps.each do |step| %>
+      <tr>
+        <td>
+          <%= step.id %>
+        </td>
+
+        <td>
+          <%= step.proposal_id %>
+        </td>
+
+        <td>
+          <%= step.name %>
+        </td>
+
+        <td>
+          <%= step.status %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(step.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(step.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/steps/<%= step.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

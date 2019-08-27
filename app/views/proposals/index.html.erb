@@ -1,0 +1,150 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all proposals
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new proposal
+    </h2>
+
+    <form action="/insert_proposal" method="post">
+      <div class="form-group">
+        <label for="name">
+          Name
+        </label>
+
+        <textarea id="name" name="name" class="form-control" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="description">
+          Description
+        </label>
+
+        <textarea id="description" name="description" class="form-control" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="location">
+          Location
+        </label>
+
+        <input type="text" id="location" name="location" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="status">
+          Status
+        </label>
+
+        <input type="text" id="status" name="status" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="owned_by_user_id">
+          Owned by user
+        </label>
+
+        <input type="text" id="owned_by_user_id" name="owned_by_user_id" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create proposal
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Location
+        </th>
+
+        <th>
+          Status
+        </th>
+
+        <th>
+          Owned by user
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @proposals.each do |proposal| %>
+      <tr>
+        <td>
+          <%= proposal.id %>
+        </td>
+
+        <td>
+          <%= proposal.name %>
+        </td>
+
+        <td>
+          <%= proposal.description %>
+        </td>
+
+        <td>
+          <%= proposal.location %>
+        </td>
+
+        <td>
+          <%= proposal.status %>
+        </td>
+
+        <td>
+          <%= proposal.owned_by_user_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(proposal.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(proposal.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/proposals/<%= proposal.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

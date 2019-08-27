@@ -1,0 +1,133 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Proposal #<%= @proposal.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/proposals" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_proposal/<%= @proposal.id %>" class="btn btn-block btn-outline-secondary">
+          Delete proposal
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @proposal.name %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @proposal.description %>
+      </dd>
+
+      <dt>
+        Location
+      </dt>
+      <dd>
+        <%= @proposal.location %>
+      </dd>
+
+      <dt>
+        Status
+      </dt>
+      <dd>
+        <%= @proposal.status %>
+      </dd>
+
+      <dt>
+        Owned by user
+      </dt>
+      <dd>
+        <%= @proposal.owned_by_user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@proposal.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@proposal.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit proposal
+    </h2>
+
+    <form action="/modify_proposal/<%= @proposal.id %>"  method="post" >
+      <div class="form-group">
+        <label for="name">
+          Name
+        </label>
+
+        <textarea id="name" name="name" class="form-control"
+          rows="3"><%= @proposal.name %></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="description">
+          Description
+        </label>
+
+        <textarea id="description" name="description" class="form-control"
+          rows="3"><%= @proposal.description %></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="location">
+          Location
+        </label>
+
+        <input type="text" id="location" name="location" class="form-control" value="<%= @proposal.location %>">
+      </div>
+
+      <div class="form-group">
+        <label for="status">
+          Status
+        </label>
+
+        <input type="text" id="status" name="status" class="form-control" value="<%= @proposal.status %>">
+      </div>
+
+      <div class="form-group">
+        <label for="owned_by_user_id">
+          Owned by user
+        </label>
+
+        <input type="text" id="owned_by_user_id" name="owned_by_user_id" class="form-control" value="<%= @proposal.owned_by_user_id %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create proposal
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

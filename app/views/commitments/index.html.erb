@@ -1,0 +1,118 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all commitments
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new commitment
+    </h2>
+
+    <form action="/insert_commitment" method="post">
+      <div class="form-group">
+        <label for="proposal_id">
+          Proposal
+        </label>
+
+        <input type="text" id="proposal_id" name="proposal_id" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="step_id">
+          Step
+        </label>
+
+        <input type="text" id="step_id" name="step_id" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="user_id">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create commitment
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Proposal
+        </th>
+
+        <th>
+          Step
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @commitments.each do |commitment| %>
+      <tr>
+        <td>
+          <%= commitment.id %>
+        </td>
+
+        <td>
+          <%= commitment.proposal_id %>
+        </td>
+
+        <td>
+          <%= commitment.step_id %>
+        </td>
+
+        <td>
+          <%= commitment.user_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(commitment.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(commitment.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/commitments/<%= commitment.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,176 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Stakeholder #<%= @stakeholder.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/stakeholders" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_stakeholder/<%= @stakeholder.id %>" class="btn btn-block btn-outline-secondary">
+          Delete stakeholder
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @stakeholder.name %>
+      </dd>
+
+      <dt>
+        Email
+      </dt>
+      <dd>
+        <%= @stakeholder.email %>
+      </dd>
+
+      <dt>
+        Phone
+      </dt>
+      <dd>
+        <%= @stakeholder.phone %>
+      </dd>
+
+      <dt>
+        Address
+      </dt>
+      <dd>
+        <%= @stakeholder.address %>
+      </dd>
+
+      <dt>
+        Created by user
+      </dt>
+      <dd>
+        <%= @stakeholder.created_by_user_id %>
+      </dd>
+
+      <dt>
+        Proposal
+      </dt>
+      <dd>
+        <%= @stakeholder.proposal_id %>
+      </dd>
+
+      <dt>
+        Step
+      </dt>
+      <dd>
+        <%= @stakeholder.step_id %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @stakeholder.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@stakeholder.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@stakeholder.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit stakeholder
+    </h2>
+
+    <form action="/modify_stakeholder/<%= @stakeholder.id %>"  method="post" >
+      <div class="form-group">
+        <label for="name">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" class="form-control" value="<%= @stakeholder.name %>">
+      </div>
+
+      <div class="form-group">
+        <label for="email">
+          Email
+        </label>
+
+        <input type="text" id="email" name="email" class="form-control" value="<%= @stakeholder.email %>">
+      </div>
+
+      <div class="form-group">
+        <label for="phone">
+          Phone
+        </label>
+
+        <input type="text" id="phone" name="phone" class="form-control" value="<%= @stakeholder.phone %>">
+      </div>
+
+      <div class="form-group">
+        <label for="address">
+          Address
+        </label>
+
+        <input type="text" id="address" name="address" class="form-control" value="<%= @stakeholder.address %>">
+      </div>
+
+      <div class="form-group">
+        <label for="created_by_user_id">
+          Created by user
+        </label>
+
+        <input type="text" id="created_by_user_id" name="created_by_user_id" class="form-control" value="<%= @stakeholder.created_by_user_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="proposal_id">
+          Proposal
+        </label>
+
+        <input type="text" id="proposal_id" name="proposal_id" class="form-control" value="<%= @stakeholder.proposal_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="step_id">
+          Step
+        </label>
+
+        <input type="text" id="step_id" name="step_id" class="form-control" value="<%= @stakeholder.step_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="user_id">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @stakeholder.user_id %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create stakeholder
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
