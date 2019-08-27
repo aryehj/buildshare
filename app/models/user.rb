@@ -2,10 +2,13 @@
 #
 # Table name: users
 #
-#  id            :integer          not null, primary key
-#  profile_photo :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  id              :integer          not null, primary key
+#  profile_photo   :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  name            :string
+#  email           :string
+#  location_string :string
 #
 
 class User < ApplicationRecord
