@@ -18,7 +18,7 @@
 			<th>Status</th>
 		</tr>
 		
-		<% Proposal.each do |this_proposal| %>
+		<% Proposal.all.each do |this_proposal| %>
 		
 		<tr>
 			<td><a href ="/proposals/<%= this_proposal.id %>"><%= this_proposal.name %></a></td>
