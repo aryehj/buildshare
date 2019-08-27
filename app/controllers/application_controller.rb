@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
     render({ :plain => "Aryeh wuz here." })
   end 
   
+  def home
+  	render({ :template => "explore/home.html.erb" })
+  end 
+  
 end

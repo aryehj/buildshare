@@ -1,0 +1,31 @@
+<div>
+	<h1>Buildshare</h1>
+</div>
+
+<div>
+	Explore, propose and manage public projects in your community.
+</div>
+
+<div>
+	<h2>Explore Proposals</h2>
+</div>
+
+<div>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Location</th>
+			<th>Status</th>
+		</tr>
+		
+		<% Proposal.each do |this_proposal| %>
+		
+		<tr>
+			<td><a href ="/proposals/<%= this_proposal.id %>"><%= this_proposal.name %></a></td>
+			<td><%= this_proposal.location %></td>
+			<td><%= this_proposal.status %></td>
+		</tr>
+	
+		<% end %>
+	</table>
+</div>
