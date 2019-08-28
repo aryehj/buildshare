@@ -8,7 +8,6 @@
 #  updated_at    :datetime         not null
 #  name          :string
 #  email         :string
-#  location      :string
 #  city          :string
 #  state         :string
 #

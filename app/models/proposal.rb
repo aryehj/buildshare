@@ -5,7 +5,6 @@
 #  id               :integer          not null, primary key
 #  name             :text
 #  description      :text
-#  location         :string
 #  status           :string
 #  owned_by_user_id :integer
 #  created_at       :datetime         not null
