@@ -32,14 +32,6 @@
       </div>
 
       <div class="form-group">
-        <label for="location">
-          Location
-        </label>
-
-        <input type="text" id="location" name="location" class="form-control">
-      </div>
-
-      <div class="form-group">
         <label for="status">
           Status
         </label>
@@ -53,6 +45,22 @@
         </label>
 
         <input type="text" id="owned_by_user_id" name="owned_by_user_id" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="state">
+          State
+        </label>
+
+        <input type="text" id="state" name="state" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="zipcode">
+          Zipcode
+        </label>
+
+        <input type="text" id="zipcode" name="zipcode" class="form-control">
       </div>
 
       <button class="btn btn-block btn-outline-secondary">
@@ -80,15 +88,19 @@
         </th>
 
         <th>
-          Location
-        </th>
-
-        <th>
           Status
         </th>
 
         <th>
           Owned by user
+        </th>
+
+        <th>
+          State
+        </th>
+
+        <th>
+          Zipcode
         </th>
 
         <th>
@@ -118,15 +130,19 @@
         </td>
 
         <td>
-          <%= proposal.location %>
-        </td>
-
-        <td>
           <%= proposal.status %>
         </td>
 
         <td>
           <%= proposal.owned_by_user_id %>
+        </td>
+
+        <td>
+          <%= proposal.state %>
+        </td>
+
+        <td>
+          <%= proposal.zipcode %>
         </td>
 
         <td>

@@ -34,13 +34,6 @@
       </dd>
 
       <dt>
-        Location
-      </dt>
-      <dd>
-        <%= @proposal.location %>
-      </dd>
-
-      <dt>
         Status
       </dt>
       <dd>
@@ -52,6 +45,20 @@
       </dt>
       <dd>
         <%= @proposal.owned_by_user_id %>
+      </dd>
+
+      <dt>
+        State
+      </dt>
+      <dd>
+        <%= @proposal.state %>
+      </dd>
+
+      <dt>
+        Zipcode
+      </dt>
+      <dd>
+        <%= @proposal.zipcode %>
       </dd>
 
       <dt>
@@ -100,14 +107,6 @@
       </div>
 
       <div class="form-group">
-        <label for="location">
-          Location
-        </label>
-
-        <input type="text" id="location" name="location" class="form-control" value="<%= @proposal.location %>">
-      </div>
-
-      <div class="form-group">
         <label for="status">
           Status
         </label>
@@ -121,6 +120,22 @@
         </label>
 
         <input type="text" id="owned_by_user_id" name="owned_by_user_id" class="form-control" value="<%= @proposal.owned_by_user_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="state">
+          State
+        </label>
+
+        <input type="text" id="state" name="state" class="form-control" value="<%= @proposal.state %>">
+      </div>
+
+      <div class="form-group">
+        <label for="zipcode">
+          Zipcode
+        </label>
+
+        <input type="text" id="zipcode" name="zipcode" class="form-control" value="<%= @proposal.zipcode %>">
       </div>
 
       <button class="btn btn-block btn-outline-secondary">

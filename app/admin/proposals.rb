@@ -1,5 +1,5 @@
 ActiveAdmin.register Proposal do
-  permit_params :name, :description, :location, :status, :owned_by_user_id
+  permit_params :name, :description, :status, :owned_by_user_id, :state, :zipcode
 
 
   # See permitted parameters documentation:

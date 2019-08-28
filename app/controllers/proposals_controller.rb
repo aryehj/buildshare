@@ -33,9 +33,10 @@ class ProposalsController < ApplicationController
 
     @proposal.name = params.fetch(:name, nil)
     @proposal.description = params.fetch(:description, nil)
-    @proposal.location = params.fetch(:location, nil)
     @proposal.status = params.fetch(:status, nil)
     @proposal.owned_by_user_id = params.fetch(:owned_by_user_id, nil)
+    @proposal.state = params.fetch(:state, nil)
+    @proposal.zipcode = params.fetch(:zipcode, nil)
 
     if @proposal.valid?
       @proposal.save
@@ -73,13 +74,16 @@ class ProposalsController < ApplicationController
     @proposal.description = params.fetch(:description, @proposal.description)
 
 
-    @proposal.location = params.fetch(:location, @proposal.location)
-
-
     @proposal.status = params.fetch(:status, @proposal.status)
 
 
     @proposal.owned_by_user_id = params.fetch(:owned_by_user_id, @proposal.owned_by_user_id)
+
+
+    @proposal.state = params.fetch(:state, @proposal.state)
+
+
+    @proposal.zipcode = params.fetch(:zipcode, @proposal.zipcode)
 
 
     if @proposal.valid?

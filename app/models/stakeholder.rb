@@ -16,10 +16,4 @@
 #
 
 class Stakeholder < ApplicationRecord
-
-	belongs_to :proposal
-	belongs_to :user, :required => false
-	belongs_to :created_by_user, :class_name => "User"
-	belongs_to :step, :required => false
-
 end

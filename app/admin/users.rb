@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :profile_photo
+  permit_params :profile_photo, :city, :state, :zipcode
 
 
   # See permitted parameters documentation:
