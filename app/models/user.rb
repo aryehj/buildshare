@@ -9,6 +9,8 @@
 #  name          :string
 #  email         :string
 #  location      :string
+#  city          :string
+#  state         :string
 #
 
 class User < ApplicationRecord

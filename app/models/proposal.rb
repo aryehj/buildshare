@@ -10,6 +10,8 @@
 #  owned_by_user_id :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  city             :string
+#  state            :string
 #
 
 class Proposal < ApplicationRecord
