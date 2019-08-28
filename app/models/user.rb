@@ -10,6 +10,7 @@
 #  email         :string
 #  city          :string
 #  state         :string
+#  zipcode       :integer
 #
 
 class User < ApplicationRecord

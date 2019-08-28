@@ -11,6 +11,7 @@
 #  updated_at       :datetime         not null
 #  city             :string
 #  state            :string
+#  zipcode          :integer
 #
 
 class Proposal < ApplicationRecord
