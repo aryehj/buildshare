@@ -22,7 +22,7 @@
 		
 		<tr>
 			<td><a href ="/proposals/<%= this_proposal.id %>"><%= this_proposal.name %></a></td>
-			<td><%= this_proposal.location %></td>
+			<td><%= this_proposal.city + ", " + this_proposal.state + " " + this_proposal.zipcode %></td>
 			<td><%= this_proposal.status %></td>
 		</tr>
 	
