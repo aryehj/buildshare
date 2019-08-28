@@ -9,7 +9,7 @@ namespace(:dev) do
         u.email = Faker::Internet.email
         u.city = Faker::Address.city
         u.state = Faker::Address.state_abbr
-        u.zip = Faker::Address.zip.to_s.gsub("-","").to_i
+        u.zipcode = Faker::Address.zip.to_s.gsub("-","").to_i
         u.save
       end
 
@@ -19,7 +19,7 @@ namespace(:dev) do
         p.description = Faker::Hipster.paragraphs(number: 2)
         p.city = Faker::Address.city
         p.state = Faker::Address.state_abbr
-        p.zip = Faker::Address.zip.to_s.gsub("-","").to_i
+        p.zipcode = Faker::Address.zip.to_s.gsub("-","").to_i
         p.status = ['draft','published','project','archived'].sample
         p.owned_by_user_id = User.all.pluck(:id).sample
         p.save
