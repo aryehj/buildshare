@@ -11,4 +11,9 @@
 #
 
 class Commitment < ApplicationRecord
+
+belongs_to :proposal
+belongs_to :user
+belongs_to :step
+
 end
