@@ -1,5 +1,5 @@
 <div>
-	<h1>Buildshare</h1>
+	<h1>Explore</h1>
 </div>
 
 <div>
@@ -13,9 +13,9 @@
 <div>
 	<table>
 		<tr>
-			<th>Name</th>
-			<th>Location</th>
-			<th>Status</th>
+			<th>Proposal</th>
+			<th>City</th>
+			<th>State</th>
 		</tr>
 		
 		<% Proposal.all.each do |this_proposal| %>
@@ -23,7 +23,7 @@
 		<tr>
 			<td><a href ="/proposals/<%= this_proposal.id %>"><%= this_proposal.name %></a></td>
 			<td><%= this_proposal.city %></td>
-			<td><%= this_proposal.status %></td>
+			<td><%= this_proposal.state %></td>
 		</tr>
 	
 		<% end %>
