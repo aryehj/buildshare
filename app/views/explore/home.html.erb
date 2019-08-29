@@ -1,8 +1,5 @@
 <div>
 	<h1>Explore</h1>
-</div>
-
-<div>
 	Explore, propose and manage public projects in your community.
 </div>
 
@@ -11,21 +8,21 @@
 </div>
 
 <div>
-	<table>
+	<table class="table">
 		<tr>
 			<th>Proposal</th>
 			<th>City</th>
 			<th>State</th>
 		</tr>
-		
+
 		<% Proposal.all.each do |this_proposal| %>
-		
+
 		<tr>
 			<td><a href ="/proposals/<%= this_proposal.id %>"><%= this_proposal.name %></a></td>
 			<td><%= this_proposal.city %></td>
 			<td><%= this_proposal.state %></td>
 		</tr>
-	
+
 		<% end %>
 	</table>
 </div>

@@ -31,13 +31,14 @@
   </head>
 
   <body>
-    <nav>
-    	<a href ="/">Buildshare</a>
+    <nav class="navbar navbar-dark bg-light">
+      Buildshare
+    	<a href ="/">Explore</a>
     </nav>
 
-    <!-- ↓↓↓ Your view templates all get plugged in below ↓↓↓ -->
-    <%= yield %>
-    <!-- ↑↑↑ Your view templates all get plugged in above ↑↑↑ -->
-    
+    <div class="container">
+      <%= yield %>
+    </div>
+
   </body>
 </html>
