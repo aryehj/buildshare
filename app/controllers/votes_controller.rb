@@ -1,4 +1,4 @@
-class VotesController < LoggedInController
+class VotesController < LoginController
   def index
     @votes = Vote.all.order({ :created_at => :desc })
 

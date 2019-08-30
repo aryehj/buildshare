@@ -1,4 +1,4 @@
-class StakeholdersController < LoggenInController
+class StakeholdersController < LoginController
   def index
     @stakeholders = Stakeholder.all.order({ :created_at => :desc })
 

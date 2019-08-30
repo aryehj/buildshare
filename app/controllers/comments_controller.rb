@@ -1,4 +1,4 @@
-class CommentsController < LoggenInController
+class CommentsController < LoginController
   def index
     @comments = Comment.all.order({ :created_at => :desc })
 

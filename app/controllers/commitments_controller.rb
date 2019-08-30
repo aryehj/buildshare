@@ -1,4 +1,4 @@
-class CommitmentsController < LoggedInController
+class CommitmentsController < LoginController
   def index
     @commitments = Commitment.all.order({ :created_at => :desc })
 

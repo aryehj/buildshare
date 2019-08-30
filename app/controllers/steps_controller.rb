@@ -1,4 +1,4 @@
-class StepsController < LoggedInController
+class StepsController < LoginController
   def index
     @steps = Step.all.order({ :created_at => :desc })
 

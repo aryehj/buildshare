@@ -1,4 +1,4 @@
-class ProposalsController < LoggedInController
+class ProposalsController < LoginController
   def index
     @proposals = Proposal.all.order({ :created_at => :desc })
 
