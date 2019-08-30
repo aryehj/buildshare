@@ -36,8 +36,12 @@
       Home
     	<a href ="/">Explore</a>
       Proposals
-      Login
-      Logout
+      <% if @user == nil? %>
+      Sign In
+      <a href="/sign_up">Sign Up</a>
+      <% else %>
+      <a href="/sign_out">Sign Out</a>
+      <% end %>
     </nav>
 
     <% if notice.present? %>

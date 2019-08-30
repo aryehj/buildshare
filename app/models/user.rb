@@ -2,15 +2,16 @@
 #
 # Table name: users
 #
-#  id            :integer          not null, primary key
-#  profile_photo :string
-#  city          :string
-#  state         :string
-#  zipcode       :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  name          :string
-#  email         :string
+#  id              :integer          not null, primary key
+#  profile_photo   :string
+#  city            :string
+#  state           :string
+#  zipcode         :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  name            :string
+#  email           :string
+#  password_digest :string
 #
 
 class User < ApplicationRecord
