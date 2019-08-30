@@ -1,7 +1,7 @@
-class StakeholdersController < ApplicationController
+class StakeholdersController < LoggenInController
   def index
     @stakeholders = Stakeholder.all.order({ :created_at => :desc })
-    
+
     respond_to do |format|
       format.json do
         render({ :json => @stakeholders.as_json })
@@ -46,7 +46,7 @@ class StakeholdersController < ApplicationController
         format.json do
           render({ :json => @stakeholder.as_json })
         end
-  
+
         format.html do
           redirect_to("/stakeholders", { :notice => "Stakeholder created successfully."})
         end
@@ -57,7 +57,7 @@ class StakeholdersController < ApplicationController
         format.json do
           render({ :json => @stakeholder.as_json })
         end
-  
+
         format.html do
           redirect_to("/stakeholders", { :notice => "Stakeholder failed to create successfully."})
         end
@@ -100,7 +100,7 @@ class StakeholdersController < ApplicationController
         format.json do
           render({ :json => @stakeholder.as_json })
         end
-  
+
         format.html do
           redirect_to("/stakeholders/#{@stakeholder.id}", {:notice => "Stakeholder updated successfully."})
         end
@@ -111,7 +111,7 @@ class StakeholdersController < ApplicationController
         format.json do
           render({ :json => @stakeholder.as_json })
         end
-  
+
         format.html do
           render({ :template => "stakeholders/show.html.erb" })
         end

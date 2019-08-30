@@ -1,7 +1,7 @@
-class CommitmentsController < ApplicationController
+class CommitmentsController < LoggedInController
   def index
     @commitments = Commitment.all.order({ :created_at => :desc })
-    
+
     respond_to do |format|
       format.json do
         render({ :json => @commitments.as_json })
@@ -41,7 +41,7 @@ class CommitmentsController < ApplicationController
         format.json do
           render({ :json => @commitment.as_json })
         end
-  
+
         format.html do
           redirect_to("/commitments", { :notice => "Commitment created successfully."})
         end
@@ -52,7 +52,7 @@ class CommitmentsController < ApplicationController
         format.json do
           render({ :json => @commitment.as_json })
         end
-  
+
         format.html do
           redirect_to("/commitments", { :notice => "Commitment failed to create successfully."})
         end
@@ -80,7 +80,7 @@ class CommitmentsController < ApplicationController
         format.json do
           render({ :json => @commitment.as_json })
         end
-  
+
         format.html do
           redirect_to("/commitments/#{@commitment.id}", {:notice => "Commitment updated successfully."})
         end
@@ -91,7 +91,7 @@ class CommitmentsController < ApplicationController
         format.json do
           render({ :json => @commitment.as_json })
         end
-  
+
         format.html do
           render({ :template => "commitments/show.html.erb" })
         end

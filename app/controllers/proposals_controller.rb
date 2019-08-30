@@ -1,7 +1,7 @@
-class ProposalsController < ApplicationController
+class ProposalsController < LoggedInController
   def index
     @proposals = Proposal.all.order({ :created_at => :desc })
-    
+
     respond_to do |format|
       format.json do
         render({ :json => @proposals.as_json })
@@ -44,7 +44,7 @@ class ProposalsController < ApplicationController
         format.json do
           render({ :json => @proposal.as_json })
         end
-  
+
         format.html do
           redirect_to("/proposals", { :notice => "Proposal created successfully."})
         end
@@ -55,7 +55,7 @@ class ProposalsController < ApplicationController
         format.json do
           render({ :json => @proposal.as_json })
         end
-  
+
         format.html do
           redirect_to("/proposals", { :notice => "Proposal failed to create successfully."})
         end
@@ -92,7 +92,7 @@ class ProposalsController < ApplicationController
         format.json do
           render({ :json => @proposal.as_json })
         end
-  
+
         format.html do
           redirect_to("/proposals/#{@proposal.id}", {:notice => "Proposal updated successfully."})
         end
@@ -103,7 +103,7 @@ class ProposalsController < ApplicationController
         format.json do
           render({ :json => @proposal.as_json })
         end
-  
+
         format.html do
           render({ :template => "proposals/show.html.erb" })
         end

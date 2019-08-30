@@ -1,7 +1,7 @@
-class StepsController < ApplicationController
+class StepsController < LoggedInController
   def index
     @steps = Step.all.order({ :created_at => :desc })
-    
+
     respond_to do |format|
       format.json do
         render({ :json => @steps.as_json })
@@ -41,7 +41,7 @@ class StepsController < ApplicationController
         format.json do
           render({ :json => @step.as_json })
         end
-  
+
         format.html do
           redirect_to("/steps", { :notice => "Step created successfully."})
         end
@@ -52,7 +52,7 @@ class StepsController < ApplicationController
         format.json do
           render({ :json => @step.as_json })
         end
-  
+
         format.html do
           redirect_to("/steps", { :notice => "Step failed to create successfully."})
         end
@@ -80,7 +80,7 @@ class StepsController < ApplicationController
         format.json do
           render({ :json => @step.as_json })
         end
-  
+
         format.html do
           redirect_to("/steps/#{@step.id}", {:notice => "Step updated successfully."})
         end
@@ -91,7 +91,7 @@ class StepsController < ApplicationController
         format.json do
           render({ :json => @step.as_json })
         end
-  
+
         format.html do
           render({ :template => "steps/show.html.erb" })
         end

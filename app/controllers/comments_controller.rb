@@ -1,7 +1,7 @@
-class CommentsController < ApplicationController
+class CommentsController < LoggenInController
   def index
     @comments = Comment.all.order({ :created_at => :desc })
-    
+
     respond_to do |format|
       format.json do
         render({ :json => @comments.as_json })
@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
         format.json do
           render({ :json => @comment.as_json })
         end
-  
+
         format.html do
           redirect_to("/comments", { :notice => "Comment created successfully."})
         end
@@ -52,7 +52,7 @@ class CommentsController < ApplicationController
         format.json do
           render({ :json => @comment.as_json })
         end
-  
+
         format.html do
           redirect_to("/comments", { :notice => "Comment failed to create successfully."})
         end
@@ -80,7 +80,7 @@ class CommentsController < ApplicationController
         format.json do
           render({ :json => @comment.as_json })
         end
-  
+
         format.html do
           redirect_to("/comments/#{@comment.id}", {:notice => "Comment updated successfully."})
         end
@@ -91,7 +91,7 @@ class CommentsController < ApplicationController
         format.json do
           render({ :json => @comment.as_json })
         end
-  
+
         format.html do
           render({ :template => "comments/show.html.erb" })
         end

@@ -1,7 +1,7 @@
-class VotesController < ApplicationController
+class VotesController < LoggedInController
   def index
     @votes = Vote.all.order({ :created_at => :desc })
-    
+
     respond_to do |format|
       format.json do
         render({ :json => @votes.as_json })
@@ -40,7 +40,7 @@ class VotesController < ApplicationController
         format.json do
           render({ :json => @vote.as_json })
         end
-  
+
         format.html do
           redirect_to("/votes", { :notice => "Vote created successfully."})
         end
@@ -51,7 +51,7 @@ class VotesController < ApplicationController
         format.json do
           render({ :json => @vote.as_json })
         end
-  
+
         format.html do
           redirect_to("/votes", { :notice => "Vote failed to create successfully."})
         end
@@ -76,7 +76,7 @@ class VotesController < ApplicationController
         format.json do
           render({ :json => @vote.as_json })
         end
-  
+
         format.html do
           redirect_to("/votes/#{@vote.id}", {:notice => "Vote updated successfully."})
         end
@@ -87,7 +87,7 @@ class VotesController < ApplicationController
         format.json do
           render({ :json => @vote.as_json })
         end
-  
+
         format.html do
           render({ :template => "votes/show.html.erb" })
         end
