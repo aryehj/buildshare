@@ -1,4 +1,4 @@
-Class UsersController < ApplicationController
+class UsersController < ApplicationController
 
 def sign_up_form
   render({ :template => "users/create.html.erb" })
@@ -31,11 +31,10 @@ def create
         { :alert => "Oops. Please try again." }
       )
   end
+end
 
   def sign_in
     render({ :template => "users/sign_in.html.erb" })
   end
-
-end
 
 end
