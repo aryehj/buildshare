@@ -6,7 +6,7 @@ end
 
 def sign_out
   reset_session
-  redirect_to("/explore",
+  redirect_to("/",
     { :notice => "Signed out." }
   )
 end
@@ -23,11 +23,11 @@ def create
 
   if save_status == true
       session[:user_id] = u.id
-      redirect_to("/explore",
+      redirect_to("/",
         { :notice => "You're signed in!" }
       )
   else
-      redirect_to("/explore",
+      redirect_to("/",
         { :alert => "Oops. Please try again." }
       )
   end

@@ -33,14 +33,13 @@
   <body>
     <nav class="navbar navbar-expand navbar-dark bg-light">
       <a class="navbar-brand">Buildshare</a>
-
-      <a href ="/">Explore</a>
-      <% if @user == nil? %>
-        <a href="/sign_in">Sign In</a>
-        <a href="/sign_up">Sign Up</a>
+        <a class="nav-link" href ="/">Explore</a>
+      <% if session[:user_id].present? %>
+        <a class="nav-link" href ="/">Home</a>
+        <a class="nav-link" href="/sign_out">Sign Out</a>
       <% else %>
-        <a href ="/">Home</a>
-        <a href="/sign_out">Sign Out</a>
+        <a class="nav-link" href="/sign_in">Sign In</a>
+        <a class="nav-link" href="/sign_up">Sign Up</a>
       <% end %>
     </nav>
 
