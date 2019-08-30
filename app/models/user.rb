@@ -16,11 +16,19 @@
 class User < ApplicationRecord
 
 has_secure_password
+
 has_one :stakeholder, :dependent => :nullify
 has_many :comments, :dependent => :nullify
 has_many :proposals, :foreign_key => "owned_by_user_id", :dependent => :nullify
 has_many :votes, :dependent => :destroy
 has_many :commitments, :dependent => :nullify
 has_many :stakeholders, :foreign_key => "created_by_user_id", :dependent => :nullify
+
+validates(:email,
+  {
+    :presence => true,
+    :uniqueness => true
+  }
+)
 
 end
