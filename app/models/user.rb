@@ -15,6 +15,7 @@
 
 class User < ApplicationRecord
 
+has_secure_password
 has_one :stakeholder, :dependent => :nullify
 has_many :comments, :dependent => :nullify
 has_many :proposals, :foreign_key => "owned_by_user_id", :dependent => :nullify
