@@ -18,7 +18,7 @@ def create
   u.city = params.fetch(:form_city)
   u.state = params.fetch(:form_state)
   u.zipcode = params.fetch(:form_zipcode)
-  u.password = params.fetch(:form_password)
+  u.password = params.fetch(:password)
   save_status = u.save
 
   if save_status == true
@@ -43,8 +43,26 @@ end
 
   def authenticate
     email = params.fetch(:form_email,nil)
-    pass = params.fetch(:form_password,nil)
+    pass = params.fetch(:password,nil)
 
+    if User.where(:email => email).exists?
+      u = User.where(:email => email).first
+      if u.authenticate(pass) == u
+        session[:user_id] = u.id
+        redirect_to("/proposals",
+            {
+              :notice => "Welcome to Buildshare"
+            }
+          )
+      else redirect_to("/sign_in",
+              { :alert => "Unrecognized email or password" }
+            )
+      end
+    else
+      redirect_to("/sign_in",
+          { :alert => "Unrecognized email or password" }
+      )
+    end
   end
 
 end

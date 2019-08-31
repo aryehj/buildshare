@@ -385,6 +385,7 @@ DEPENDENCIES
   activeadmin
   annotate
   awesome_print
+  bcrypt
   better_errors
   binding_of_caller
   bootstrap
@@ -392,7 +393,6 @@ DEPENDENCIES
   capybara
   coffee-rails
   console_ip_whitelist!
-  devise
   dotenv-rails
   draft_generators!
   factory_bot_rails

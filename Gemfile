@@ -10,7 +10,7 @@ ruby '2.6.3'
 gem "activeadmin"
 gem "bootstrap"
 gem "coffee-rails"
-gem "devise"
+gem "bcrypt"
 gem "faker", :git => "https://github.com/stympy/faker.git", :branch => "master"
 gem "jbuilder", "~> 2.5"
 gem "puma", "~> 3.7"
