@@ -1,36 +1,30 @@
-<form action="/insert_proposal" method="post">
-  <div class="form-group">
-    <label for="name">
-      Name
-    </label>
+<div style="margin-top: 1rem; margin-bottom: 2rem;">
+  <h1>Create Proposal</h1>
+</div>
 
-    <input type="text" id="name" name="name">
+<form action="/insert_proposal" method="post">
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" class="form-control">
   </div>
 
   <div class="form-group">
-    <label for="description">
-      Description
-    </label>
-
+    <label for="description">Description</label>
     <textarea id="description" name="description" class="form-control" rows="3"></textarea>
   </div>
 
+  <input type="hidden" id="owned_by_user_id" name="owned_by_user_id" class="form-control" value="<%= session[:user_id] %>">
+  <input type="hidden" id="status" name="status" class="form-control" value="draft">
 
-    <input type="hidden" id="owned_by_user_id" name="owned_by_user_id" class="form-control" value="<%= session[:user_id] %>">
 
   <div class="form-group">
-    <label for="state">
-      State
-    </label>
-
+    <label for="state">State</label>
     <input type="text" id="state" name="state" class="form-control">
   </div>
 
   <div class="form-group">
-    <label for="zipcode">
-      Zipcode
-    </label>
-
+    <label for="zipcode">Zipcode</label>
     <input type="text" id="zipcode" name="zipcode" class="form-control">
   </div>
 

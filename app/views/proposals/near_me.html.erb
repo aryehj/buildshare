@@ -1,0 +1,13 @@
+<div style="margin-top: 1rem; margin-bottom: 2rem;">
+  <h1>Proposals Near Me</h1>
+</div>
+
+<div>
+  <table class="table">
+  <% User.where(:id => session[:user_id]).first.nearby_zips %>
+  <% end %>
+  <% Proposal.where(:zipcode => @nearby_zips).each do |this_proposal| %>
+    <%= this_proposal.name %>
+  <% end %>
+  </table>
+</div>

@@ -42,8 +42,26 @@
 
 <div>
   <h2>My Activity</h2>
-</div>
+  <table class="table">
+    <tr>
+      <th>Proposal</th>
+      <th>Comment</th>
+      <th>User</th>
+      <th>Time</th>
+    </tr>
 
-<div>
-  <h2>Proposals Near Me</h2>
+    <% u = User.where(:id => session[:user_id]).first %>
+    <% relevant_proposals = u.proposals.pluck(:id) %>
+    <% relevant_proposals = relevant_proposals + u.comments.pluck(:proposal_id) %>
+    <% relevant_proposals = relevant_proposals + u.votes.pluck(:proposal_id) %>
+    <% Comment.where(:proposal_id => relevant_proposals).each do |this_comment| %>
+      <tr>
+        <td><a href="/proposals/<%= this_comment.proposal_id %>"><%= this_comment.proposal.name %></a></td>
+        <td><%= this_comment.comment %></td>
+        <td><%= this_comment.user.name %></td>
+        <td><%= this_comment.created_at %></td>
+      </tr>
+    <% end %>
+
+  </table>
 </div>

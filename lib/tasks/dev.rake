@@ -23,7 +23,7 @@ namespace(:dev) do
       20.times do
         p = Proposal.new
         p.name = Faker::Hipster.sentence(word_count: 4)
-        p.description = Faker::Hipster.paragraphs(number: 2)
+        p.description = Faker::Hipster.paragraph
         p.city = Faker::Address.city
         p.state = Faker::Address.state_abbr
         p.zipcode = Faker::Address.zip.to_s.gsub("-","").to_i
@@ -34,7 +34,7 @@ namespace(:dev) do
 
       50.times do
       	c = Comment.new
-      	c.comment = Faker::Hipster.sentences(number: 2)
+      	c.comment = Faker::Hipster.sentence
       	c.user_id = User.all.pluck(:id).sample
       	c.proposal_id = Proposal.all.pluck(:id).sample
       	c.save
@@ -51,7 +51,7 @@ namespace(:dev) do
       	s = Step.new
       	s.proposal_id = Proposal.all.pluck(:id).sample
       	s.name =  Faker::Hipster.sentence(word_count: 3)
-      	s.status = ["unassigned","assiged","done"].sample
+      	s.status = ["unassigned","assigned","done"].sample
       	s.save
       end
 
