@@ -23,7 +23,7 @@ def create
 
   if save_status == true
       session[:user_id] = u.id
-      redirect_to("/",
+      redirect_to("/home",
         { :notice => "You're signed in!" }
       )
   else
@@ -49,7 +49,7 @@ end
       u = User.where(:email => email).first
       if u.authenticate(pass) == u
         session[:user_id] = u.id
-        redirect_to("/proposals",
+        redirect_to("/home",
             {
               :notice => "Welcome to Buildshare"
             }

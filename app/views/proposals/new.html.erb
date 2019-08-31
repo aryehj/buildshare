@@ -1,0 +1,40 @@
+<form action="/insert_proposal" method="post">
+  <div class="form-group">
+    <label for="name">
+      Name
+    </label>
+
+    <input type="text" id="name" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="description">
+      Description
+    </label>
+
+    <textarea id="description" name="description" class="form-control" rows="3"></textarea>
+  </div>
+
+
+    <input type="hidden" id="owned_by_user_id" name="owned_by_user_id" class="form-control" value="<%= session[:user_id] %>">
+
+  <div class="form-group">
+    <label for="state">
+      State
+    </label>
+
+    <input type="text" id="state" name="state" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="zipcode">
+      Zipcode
+    </label>
+
+    <input type="text" id="zipcode" name="zipcode" class="form-control">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create
+  </button>
+</form>

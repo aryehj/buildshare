@@ -1,3 +1,49 @@
-<div style="margin-top: 1rem;">
+<div style="margin-top: 1rem; margin-bottom: 2rem;">
   <h1>Home</h1>
+</div>
+
+<div>
+  <h2>My Proposals</h2>
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Votes</th>
+      <th>Comments</th>
+    </tr>
+    <% User.where(:id => session[:user_id]).first.proposals.each do |this_proposal| %>
+    <tr>
+      <td><a href="/proposals/<%= this_proposal.id %>"><%= this_proposal.name %></a></td>
+      <td><%= this_proposal.status %></td>
+      <td><%= this_proposal.votes.count %></td>
+      <td><%= this_proposal.comments.count %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+<div>
+  <h2>My Commitments</h2>
+  <table class="table">
+    <tr>
+      <th>Proposal</th>
+      <th>Step</th>
+      <th>Status</th>
+    </tr>
+    <% Commitment.where(:user_id => session[:user_id]).each do |this_commitment| %>
+    <tr>
+      <td><a href="/proposals/<%= this_commitment.proposal_id %>"><%= this_commitment.proposal.name %></a></td>
+      <td><%= this_commitment.step.name %></td>
+      <td><%= this_commitment.step.status %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+<div>
+  <h2>My Activity</h2>
+</div>
+
+<div>
+  <h2>Proposals Near Me</h2>
 </div>

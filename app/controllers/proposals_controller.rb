@@ -13,6 +13,10 @@ class ProposalsController < LoginController
     end
   end
 
+  def form
+    render({ :template => "proposals/new.html.erb" })
+  end
+
   def show
     the_id = params.fetch(:route_proposal_id)
     @proposal = Proposal.where({:id => the_id }).first

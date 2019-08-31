@@ -142,6 +142,13 @@ Rails.application.routes.draw do
 
   # CREATE
   match("/insert_proposal", { :controller => "proposals", :action => "create", :via => "post"})
+  match("/proposals/new",
+      {
+        :controller => "proposals",
+        :action => "form",
+        :via => "get"
+      }
+    )
 
   # READ
   match("/proposals", { :controller => "proposals", :action => "index", :via => "get"})
@@ -167,7 +174,7 @@ Rails.application.routes.draw do
   		)
 
   match("/home", {
-    :controller => "user",
+    :controller => "users",
     :action => "home",
     :via => "get"
         }
