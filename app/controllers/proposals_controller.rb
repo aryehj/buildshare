@@ -115,6 +115,10 @@ class ProposalsController < LoginController
     end
   end
 
+  def near_me
+    render({ :template => "proposals/near_me.html.erb" })
+  end
+
   def destroy
     the_id = params.fetch(:route_proposal_id)
     @proposal = Proposal.where({ :id => the_id }).first

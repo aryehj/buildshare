@@ -32,4 +32,15 @@ validates(:email,
   }
 )
 
+def nearby
+  user_zip = self.zipcode[0..4]
+  @nearby_zips = Array.new
+  @nearby_zips.push(user_zip)
+  1.upto(20) do |add_zips|
+    @nearby_zips.push(user_zip + add_zips)
+    @nearby_zips.push(user_zip - add_zips)
+  end
+  return @nearby_zips
+end
+
 end

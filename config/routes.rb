@@ -153,6 +153,8 @@ Rails.application.routes.draw do
   # READ
   match("/proposals", { :controller => "proposals", :action => "index", :via => "get"})
 
+  match("/proposals/near_me", { :controller => "proposals", :action => "near_me", via: "get"})
+
   match("/proposals/:route_proposal_id", { :controller => "proposals", :action => "show", :via => "get"})
 
   # UPDATE

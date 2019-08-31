@@ -4,10 +4,24 @@
 
 <div>
   <table class="table">
-  <% User.where(:id => session[:user_id]).first.nearby_zips %>
-  <% end %>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th>Votes</th>
+      <th>Comments</th>
+      <th>Commitments</th>
+    </tr>
+  <% User.where(:id => session[:user_id]).first.nearby %>
   <% Proposal.where(:zipcode => @nearby_zips).each do |this_proposal| %>
-    <%= this_proposal.name %>
+    <tr>
+      <td><%= this_proposal.name %></td>
+      <td><%= this_proposal.description %></td>
+      <td><%= this_proposal.city %>, <%= this_proposal.state %> <%= this_proposal.zipcode %></td>
+      <td><%= this_proposal.votes.count %></td>
+      <td><%= this_proposal.comments.count %></td>
+      <td><%= this_proposal.commitments.count %></td>
+    </tr>
   <% end %>
   </table>
 </div>

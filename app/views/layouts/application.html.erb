@@ -34,7 +34,8 @@
     <nav class="navbar navbar-expand navbar-dark bg-light">
       <a class="navbar-brand">Buildshare</a>
       <% if session[:user_id].present? %>
-        <a class="nav-link" href ="/home">Home</a>
+        <a class="nav-link" href="/home">Home</a>
+        <a class="nav-link" href="/proposals/near_me">Near Me</a>
         <a class="nav-link" href="/sign_out">Sign Out</a>
       <% else %>
         <a class="nav-link" href ="/">Explore</a>

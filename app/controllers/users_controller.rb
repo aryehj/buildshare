@@ -65,8 +65,9 @@ end
     end
   end
 
-  def nearby_zips
-    user_zip = self.zipcode
+  def nearby
+    user = User.where(:id => session[:user_id]).first
+    user_zip = user.zipcode[0..4]
     @nearby_zips = Array.new
     @nearby_zips.push(user_zip)
     1.upto(20) do |add_zips|
