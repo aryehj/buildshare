@@ -12,8 +12,8 @@
       <th>Comments</th>
       <th>Commitments</th>
     </tr>
-  <% User.where(:id => session[:user_id]).first.nearby %>
-  <% Proposal.where(:zipcode => @nearby_zips).each do |this_proposal| %>
+  <% nearby_zips = User.where(:id => session[:user_id]).first.nearby %>
+  <% Proposal.where(:zipcode => nearby_zips).each do |this_proposal| %>
     <tr>
       <td><%= this_proposal.name %></td>
       <td><%= this_proposal.description %></td>
