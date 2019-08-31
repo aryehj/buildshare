@@ -37,4 +37,14 @@ end
     render({ :template => "users/sign_in.html.erb" })
   end
 
+  def home
+    render({ :template => "users/home.html.erb" })
+  end
+
+  def authenticate
+    email = params.fetch(:form_email,nil)
+    pass = params.fetch(:form_password,nil)
+
+  end
+
 end

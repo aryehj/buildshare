@@ -3,6 +3,12 @@ namespace(:dev) do
     task({ :prime => :environment }) do
       require 'faker'
 
+      aryeh = User.new
+      aryeh.name = "Aryeh"
+      aryeh.password = "poop"
+      aryeh.email = "aryehj@gmail.com"
+      aryeh.save
+
       10.times do
         u = User.new
         u.name = Faker::Name.name
@@ -10,6 +16,7 @@ namespace(:dev) do
         u.city = Faker::Address.city
         u.state = Faker::Address.state_abbr
         u.zipcode = Faker::Address.zip.to_s.gsub("-","").to_i
+        u.password = "ipooped"
         u.save
       end
 
@@ -24,38 +31,38 @@ namespace(:dev) do
         p.owned_by_user_id = User.all.pluck(:id).sample
         p.save
       end
-      
+
       50.times do
       	c = Comment.new
       	c.comment = Faker::Hipster.sentences(number: 2)
       	c.user_id = User.all.pluck(:id).sample
       	c.proposal_id = Proposal.all.pluck(:id).sample
       	c.save
-      end 
-      
+      end
+
       100.times do
       	v = Vote.new
       	v.user_id = User.all.pluck(:id).sample
       	v.proposal_id = Proposal.all.pluck(:id).sample
       	v.save
       end
-      
-      80.times do 
+
+      80.times do
       	s = Step.new
       	s.proposal_id = Proposal.all.pluck(:id).sample
       	s.name =  Faker::Hipster.sentence(word_count: 3)
       	s.status = ["unassigned","assiged","done"].sample
       	s.save
-      end 
-      
+      end
+
       30.times do
       	c = Commitment.new
       	c.proposal_id = Step.all.pluck(:proposal_id).sample
       	c.step_id = Step.where(:proposal_id => c.proposal_id).pluck(:id).sample
       	c.user_id = User.all.pluck(:id).sample
       	c.save
-      end 
-      
+      end
+
       40.times do
       	s = Stakeholder.new
       	s.name = Faker::Name.name
@@ -66,7 +73,7 @@ namespace(:dev) do
       	s.step_id = Step.where(:proposal_id => s.proposal_id).pluck(:id).sample
       	s.created_by_user_id = User.all.pluck(:id).sample
       	s.save
-      end 
-       
+      end
+
   end
 end

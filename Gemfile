@@ -8,6 +8,7 @@ end
 ruby '2.6.3'
 
 gem "activeadmin"
+gem "bootstrap"
 gem "coffee-rails"
 gem "devise"
 gem "faker", :git => "https://github.com/stympy/faker.git", :branch => "master"

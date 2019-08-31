@@ -35,6 +35,14 @@ Rails.application.routes.draw do
     }
   )
 
+  match("/authenticate",
+    {
+      :controller => "users",
+      :action => "authenticate",
+      :via => "post"
+    }
+  )
+
   # Routes for the Stakeholder resource:
 
   # CREATE
@@ -153,10 +161,17 @@ Rails.application.routes.draw do
 
   match("/", {
   		:controller => "application",
-  		:action => "home",
+  		:action => "explore",
   		:via => "get"
   			 }
   		)
+
+  match("/home", {
+    :controller => "user",
+    :action => "home",
+    :via => "get"
+        }
+      )
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
