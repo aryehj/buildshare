@@ -17,6 +17,10 @@
   <input type="hidden" id="owned_by_user_id" name="owned_by_user_id" class="form-control" value="<%= session[:user_id] %>">
   <input type="hidden" id="status" name="status" class="form-control" value="draft">
 
+  <div class="form-group">
+    <label for="city">City</label>
+    <input type="text" id="city" name="city" class="form-control">
+  </div>
 
   <div class="form-group">
     <label for="state">State</label>
@@ -24,7 +28,7 @@
   </div>
 
   <div class="form-group">
-    <label for="zipcode">Zipcode</label>
+    <label for="zipcode">ZIP</label>
     <input type="text" id="zipcode" name="zipcode" class="form-control">
   </div>
 

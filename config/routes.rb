@@ -62,24 +62,6 @@ Rails.application.routes.draw do
 
   #------------------------------
 
-  # Routes for the Commitment resource:
-
-  # CREATE
-  match("/insert_commitment", { :controller => "commitments", :action => "create", :via => "post"})
-
-  # READ
-  match("/commitments", { :controller => "commitments", :action => "index", :via => "get"})
-
-  match("/commitments/:route_commitment_id", { :controller => "commitments", :action => "show", :via => "get"})
-
-  # UPDATE
-
-  match("/modify_commitment/:route_commitment_id", { :controller => "commitments", :action => "update", :via => "post"})
-
-  # DELETE
-  match("/delete_commitment/:route_commitment_id", { :controller => "commitments", :action => "destroy", :via => "get"})
-
-  #------------------------------
 
   # Routes for the Step resource:
 

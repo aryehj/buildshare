@@ -51,16 +51,9 @@ namespace(:dev) do
       	s = Step.new
       	s.proposal_id = Proposal.all.pluck(:id).sample
       	s.name =  Faker::Hipster.sentence(word_count: 3)
+        s.volunteer_user_id = User.all.pluck(:id).sample
       	s.status = ["unassigned","assigned","done"].sample
       	s.save
-      end
-
-      30.times do
-      	c = Commitment.new
-      	c.proposal_id = Step.all.pluck(:proposal_id).sample
-      	c.step_id = Step.where(:proposal_id => c.proposal_id).pluck(:id).sample
-      	c.user_id = User.all.pluck(:id).sample
-      	c.save
       end
 
       40.times do

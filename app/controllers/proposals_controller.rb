@@ -33,7 +33,7 @@ class ProposalsController < LoginController
   end
 
   def edit_form
-    @proposal = params.fetch(:route_proposal_id)
+    @proposal = Proposal.where(:id => params.fetch(:route_proposal_id)).first
     render({ :template => "proposals/edit.html.erb" })
   end
 

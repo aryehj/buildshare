@@ -2,9 +2,6 @@
     <h1>
       Edit
     </h1>
-    <subtitle>
-      <%= @proposal.name %>
-    </subtitle>
 </div>
 
     <form action="/modify_proposal/<%= @proposal.id %>"  method="post" >
@@ -34,13 +31,9 @@
         <input type="text" id="status" name="status" class="form-control" value="<%= @proposal.status %>">
       </div>
 
-      <div class="form-group">
-        <label for="owned_by_user_id">
-          Owned by user
-        </label>
 
-        <input type="text" id="owned_by_user_id" name="owned_by_user_id" class="form-control" value="<%= @proposal.owned_by_user_id %>">
-      </div>
+
+        <input type="hidden" id="owned_by_user_id" name="owned_by_user_id" class="form-control" value="<%= @proposal.owned_by_user_id %>">
 
       <div class="form-group">
         <label for="state">
@@ -52,14 +45,14 @@
 
       <div class="form-group">
         <label for="zipcode">
-          Zipcode
+          ZIP
         </label>
 
         <input type="text" id="zipcode" name="zipcode" class="form-control" value="<%= @proposal.zipcode %>">
       </div>
 
       <button class="btn btn-block btn-outline-secondary">
-        Create proposal
+        Save
       </button>
     </form>
   </div>
