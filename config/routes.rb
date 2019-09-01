@@ -149,6 +149,13 @@ Rails.application.routes.draw do
         :via => "get"
       }
     )
+  match("proposals/edit/:route_proposal_id",
+      {
+        :controller => "proposals",
+        :action => "edit_form",
+        :via => "get"
+      }
+    )
 
   # READ
   match("/proposals", { :controller => "proposals", :action => "index", :via => "get"})

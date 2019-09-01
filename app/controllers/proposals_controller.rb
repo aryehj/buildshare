@@ -32,6 +32,11 @@ class ProposalsController < LoginController
     end
   end
 
+  def edit_form
+    @proposal = params.fetch(:route_proposal_id)
+    render({ :template => "proposals/edit.html.erb" })
+  end
+
   def create
     @proposal = Proposal.new
 

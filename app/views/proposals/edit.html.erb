@@ -1,98 +1,11 @@
 <div style="margin-top: 1rem; margin-bottom: 2rem;">
     <h1>
-      <%= @proposal.name %>
+      Edit
     </h1>
+    <subtitle>
+      <%= @proposal.name %>
+    </subtitle>
 </div>
-
-    <dl>
-      <dt>
-        Name
-      </dt>
-      <dd>
-        <%= @proposal.name %>
-      </dd>
-
-      <dt>
-        Description
-      </dt>
-      <dd>
-        <%= @proposal.description %>
-      </dd>
-
-      <dt>
-        Status
-      </dt>
-      <dd>
-        <%= @proposal.status %>
-      </dd>
-
-      <dt>
-        Owned by user
-      </dt>
-      <dd>
-        <%= @proposal.owned_by_user_id %>
-      </dd>
-
-      <dt>
-        State
-      </dt>
-      <dd>
-        <%= @proposal.state %>
-      </dd>
-
-      <dt>
-        Zipcode
-      </dt>
-      <dd>
-        <%= @proposal.zipcode %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@proposal.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@proposal.updated_at) %> ago
-      </dd>
-    </dl>
-
-    <div class="row mb-3">
-      <div class="col">
-        <a href="/proposals/edit/<%= @proposal.id %>" class="btn btn-block btn-outline-secondary">
-          Edit
-        </a>
-      </div>
-
-      <div class="col">
-        <a href="/delete_proposal/<%= @proposal.id %>" class="btn btn-block btn-outline-secondary">
-          Add Step
-        </a>
-      </div>
-
-      <div class="col">
-        <a href="/delete_proposal/<%= @proposal.id %>" class="btn btn-block btn-outline-secondary">
-          Delete
-        </a>
-      </div>
-
-</div>
-
-
-
-<hr>
-
-
-<div class="row mb-3">
-  <div class="col-md-8 offset-md-2">
-    <h2>
-      Edit proposal
-    </h2>
 
     <form action="/modify_proposal/<%= @proposal.id %>"  method="post" >
       <div class="form-group">
