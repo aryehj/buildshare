@@ -51,14 +51,6 @@ ActiveRecord::Schema.define(version: 20190901231316) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "commitments", force: :cascade do |t|
-    t.integer "proposal_id"
-    t.integer "step_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "proposals", force: :cascade do |t|
     t.text "name"
     t.text "description"
