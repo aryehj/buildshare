@@ -63,31 +63,34 @@
     </dl>
 
     <h2>Steps</h2>
-    <dl>
+    <table class="table">
+      <tr>
+        <th>Step</th>
+        <th>Owner</th>
+        <th>Status</th>
+      </tr>
     <% Step.where(:proposal_id => @proposal.id).each do |the_step| %>
-      <dt>
-        Name
-      </dt>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
       <dd>
         <%= the_step.name %>
-      </dd>
-      <dt>
-        Owner
-      </dt>
-      <dd>
         <% if the_step.status == "unassigned" %>
 
         <% elsif the_step.status == "assigned" %>
-          <%= the_step.owner.name %>
-          Mark as Done
+          <%= the_step.owner %> <button>Mark as Done</button>
         <% else %>
+          <%= the_step.owner %>
         <% end %>
       </dd>
       <dt>
         Status
       </dt>
+    </table>
     <% end %>
-    </dl>
+
 
     <% if @proposal.created_by_user.id == session[:user_id] %>
 

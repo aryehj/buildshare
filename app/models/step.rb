@@ -17,4 +17,8 @@ belongs_to :proposal
 has_one :commitment, :dependent => :destroy
 has_one :stakeholder, :dependent => :nullify
 
+def owner
+  return User.where(:id => self.volunteer_user_id).first.name
+end
+
 end
