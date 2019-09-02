@@ -23,4 +23,14 @@ has_many :votes, :dependent => :destroy
 # has_many :commitments, :dependent => :destroy
 belongs_to :created_by_user, :class_name => "User", :foreign_key => "owned_by_user_id"
 
+def needs_volunteer
+  steps = self.steps
+  needy_steps = steps.where(:volunteer_user_id => nil)
+  if needy_steps.nil?
+    return "No"
+  else
+    return "Yes"
+  end
+end
+
 end
