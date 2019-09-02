@@ -6,11 +6,8 @@
 
 <div class="row mb-3">
   <div class="col-md-12">
-    <table class="table">
+    <table class="table table-sm">
       <tr>
-        <th>
-          ID
-        </th>
 
         <th>
           Name
@@ -25,7 +22,7 @@
         </th>
 
         <th>
-          Owned by
+          Owner
         </th>
 
         <th>
@@ -33,21 +30,16 @@
         </th>
 
         <th>
-          Updated at
+          Updated
         </th>
 
-        <th>
-        </th>
       </tr>
 
       <% @proposals.each do |proposal| %>
       <tr>
-        <td>
-          <%= proposal.id %>
-        </td>
 
         <td>
-          <%= proposal.name %>
+          <a href="/proposals/<%= proposal.id %>"><%= proposal.name %></a>
         </td>
 
         <td>
@@ -64,7 +56,7 @@
 
         <td>
           <%= proposal.city %>,
-          <%= proposal.state %> 
+          <%= proposal.state %>
           <%= proposal.zipcode %>
         </td>
 
@@ -73,11 +65,6 @@
           <%= time_ago_in_words(proposal.updated_at) %> ago
         </td>
 
-        <td>
-          <a href="/proposals/<%= proposal.id %>">
-            View
-          </a>
-        </td>
       </tr>
       <% end %>
     </table>
