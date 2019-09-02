@@ -4,6 +4,7 @@
     </h1>
 </div>
 
+<div>
     <dl>
       <dt>
         Name
@@ -61,9 +62,11 @@
         <%= time_ago_in_words(@proposal.updated_at) %> ago
       </dd>
     </dl>
+</div>
 
+  <div>
     <h2>Steps</h2>
-    <table class="table">
+    <table class="table table-sm">
       <tr>
         <th>Step</th>
         <th>Owner</th>
@@ -88,7 +91,12 @@
       </tr>
     <% end %>
   </table>
+</div>
 
+<div>
+  <h2>Comments</h2>
+  <table class="table table-sm">
+</div>
 
 
     <% if @proposal.created_by_user.id == session[:user_id] %>
@@ -111,7 +119,5 @@
           Delete
         </a>
       </div>
-
-      <% end %>
-
-</div>
+    </div>
+    <% end %>
