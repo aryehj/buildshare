@@ -18,7 +18,7 @@ namespace(:dev) do
         p = Proposal.new
         p.name = Faker::Hipster.sentence(word_count: 4)
         p.description = Faker::Hipster.paragraph
-        p.status = ['draft','published','project','archived'].sample
+        p.status = ['draft','published','archived'].sample
         p.owned_by_user_id = User.all.pluck(:id).sample
         owner = User.where(:id => p.owned_by_user_id).first
         p.city = owner.city
