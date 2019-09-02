@@ -3,7 +3,7 @@ namespace(:dev) do
     task({ :prime => :environment }) do
       require 'faker'
 
-      200.times do
+      100.times do
         u = User.new
         u.name = Faker::Name.name
         u.email = Faker::Internet.email
