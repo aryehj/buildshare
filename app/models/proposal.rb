@@ -26,7 +26,7 @@ belongs_to :created_by_user, :class_name => "User", :foreign_key => "owned_by_us
 def needs_volunteer
   steps = self.steps
   needy_steps = steps.where(:volunteer_user_id => nil)
-  if needy_steps.nil?
+  if needy_steps.count == 0
     return "No"
   else
     return "Yes"

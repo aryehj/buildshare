@@ -67,7 +67,7 @@
         <td><a href="/proposals/<%= this_comment.proposal_id %>"><%= this_comment.proposal.name %></a></td>
         <td><%= this_comment.comment %></td>
         <td><%= this_comment.user.name %></td>
-        <td><%= this_comment.created_at %></td>
+        <td><%= time_ago_in_words(this_comment.created_at) %> ago</td>
       </tr>
     <% end %>
 
