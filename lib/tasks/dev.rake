@@ -3,12 +3,6 @@ namespace(:dev) do
     task({ :prime => :environment }) do
       require 'faker'
 
-      aryeh = User.new
-      aryeh.name = "Aryeh"
-      aryeh.password = "poop"
-      aryeh.email = "aryehj@gmail.com"
-      aryeh.save
-
       10.times do
         u = User.new
         u.name = Faker::Name.name
@@ -51,8 +45,13 @@ namespace(:dev) do
       	s = Step.new
       	s.proposal_id = Proposal.all.pluck(:id).sample
       	s.name = Faker::Hipster.sentence(word_count: 3)
-      	s.status = ["unassigned","assigned","done"].sample
-        if s.status == "assigned" || "done" && Proposal.where(:id => s.proposal_id).first.status != "draft"
+        p = Proposal.where(:id => s.proposal_id).first
+        if p.status == "draft"
+          s.status = "unassigned"
+        else
+      	  s.status = ["unassigned","assigned","done"].sample
+        end
+        if s.status == "assigned" || s.status == "done"
           s.volunteer_user_id = User.all.pluck(:id).sample
         end
       	s.save
