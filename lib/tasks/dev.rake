@@ -14,12 +14,14 @@ namespace(:dev) do
         u.save
       end
 
+      user_ids = User.all.pluck(:id)
+
       20.times do
         p = Proposal.new
         p.name = Faker::Hipster.sentence(word_count: 4)
         p.description = Faker::Hipster.paragraph
         p.status = ['draft','published','archived'].sample
-        p.owned_by_user_id = User.all.pluck(:id).sample
+        p.owned_by_user_id = user_ids.sample
         owner = User.where(:id => p.owned_by_user_id).first
         p.city = owner.city
         p.state = owner.state
@@ -28,27 +30,24 @@ namespace(:dev) do
         f = Follower.new
         f.proposal_id = p.id
         f.user_id = p.owned_by_user_id
-        f.save 
+        f.save
       end
+
+      live_proposal_ids = Proposal.where.not(:status => "draft").pluck(:id)
+      proposal_ids = Proposal.all.pluck(:id)
 
       60.times do
       	c = Comment.new
       	c.comment = Faker::Hipster.sentence
-      	c.user_id = User.all.pluck(:id).sample
-      	c.proposal_id = Proposal.where.not(:status => "draft").pluck(:id).sample
+      	c.user_id = user_ids.sample
+      	c.proposal_id = live_proposal_ids.sample
       	c.save
       end
 
-      # 100.times do
-      	# v = Vote.new
-      	# v.user_id = User.all.pluck(:id).sample
-      	# v.proposal_id = Proposal.where.not(:status => "draft").pluck(:id).sample
-      	# v.save
-      # end
 
       100.times do
       	s = Step.new
-      	s.proposal_id = Proposal.all.pluck(:id).sample
+      	s.proposal_id = proposal_ids.sample
       	s.name = Faker::Hipster.sentence(word_count: 3)
         p = Proposal.where(:id => s.proposal_id).first
         if p.status == "draft"
@@ -57,14 +56,14 @@ namespace(:dev) do
       	  s.status = ["unassigned","assigned","done"].sample
         end
         if s.status != "unassigned"
-          s.volunteer_user_id = User.all.pluck(:id).sample
+          s.volunteer_user_id = user_ids.sample
         end
       	s.save
       end
 
       200.times do
       	f = Follower.new
-      	f.proposal_id = Proposal.where.not(:status => "draft").pluck(:id).sample
+      	f.proposal_id = live_proposal_ids.sample
         f.user_id = User.where.not(:id => Proposal.where(:id => f.proposal_id).first.owned_by_user_id).pluck(:id).sample
       	f.save
       end
