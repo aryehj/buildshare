@@ -80,7 +80,17 @@
             <%= the_step.owner %>
           <% end %>
         </td>
-        <td><%= the_step.status %></td>
+        <% if the_step.status != "done" && (the_step.volunteer_user_id || @proposal.owned_by_user_id) == session[:user_id] %>
+          <td>
+            <form action="/step/<%= the_step.id %>/done" method="post">
+              <button class="btn btn-block btn-outline-secondary">
+                Mark as Done
+              </button>
+            </form>
+          </td>
+        <% else %>
+          <td><%= the_step.status %></td>
+        <% end %>
       </tr>
     <% end %>
   </table>
