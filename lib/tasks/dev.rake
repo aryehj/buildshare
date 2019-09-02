@@ -3,7 +3,7 @@ namespace(:dev) do
     task({ :prime => :environment }) do
       require 'faker'
 
-      100.times do
+      50.times do
         u = User.new
         u.name = Faker::Name.name
         u.email = Faker::Internet.email
@@ -27,7 +27,7 @@ namespace(:dev) do
         p.save
       end
 
-      50.times do
+      60.times do
       	c = Comment.new
       	c.comment = Faker::Hipster.sentence
       	c.user_id = User.all.pluck(:id).sample
@@ -52,7 +52,7 @@ namespace(:dev) do
         else
       	  s.status = ["unassigned","assigned","done"].sample
         end
-        if s.status == "assigned" || s.status == "done"
+        if s.status != "unassigned"
           s.volunteer_user_id = User.all.pluck(:id).sample
         end
       	s.save

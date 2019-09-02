@@ -1,7 +1,8 @@
-<div style="margin-top: 1rem;">
+<div style="margin-top: 1rem; margin-bottom: 2rem;">
 	<h1>Explore</h1>
-	<a href="/sign_up" class="btn btn-block btn-primary">Sign up to explore, propose and manage public projects in your community.</a>
-
+	<a href="/sign_up" class="btn btn-block btn-primary">
+		Sign up to explore, propose and manage public projects in your community.
+	</a>
 </div>
 
 <div style="margin-top: 2rem;">
@@ -20,7 +21,7 @@
 		<% Proposal.where(:status => "published").each do |this_proposal| %>
 
 		<tr>
-			<td><a href ="/proposals/<%= this_proposal.id %>"><%= this_proposal.name %></a></td>
+			<td><a href="/proposals/<%= this_proposal.id %>"><%= this_proposal.name %></a></td>
 			<td><%= this_proposal.city %>, <%= this_proposal.state %> <%= this_proposal.zipcode %></td>
 			<td><%= this_proposal.comments.count %></td>
 			<td><%= this_proposal.needs_volunteer %></td>
