@@ -67,6 +67,7 @@ Rails.application.routes.draw do
 
   # CREATE
   match("/insert_step", { :controller => "steps", :action => "create", :via => "post"})
+  match("/proposals/add_step/:route_proposal_id", { :controller => "steps", :action => "add_step_form", :via => "get" })
 
   # READ
   match("/steps", { :controller => "steps", :action => "index", :via => "get"})
@@ -76,7 +77,7 @@ Rails.application.routes.draw do
   # UPDATE
 
   match("/modify_step/:route_step_id", { :controller => "steps", :action => "update", :via => "post"})
-  match("/steps/:route_step_id/claim", { :controller => "steps", :action => "claim", :via => "post" })
+  match("/step/:route_step_id/claim", { :controller => "steps", :action => "claim", :via => "post" })
 
   # DELETE
   match("/delete_step/:route_step_id", { :controller => "steps", :action => "destroy", :via => "get"})

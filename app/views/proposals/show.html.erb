@@ -73,7 +73,7 @@
       <tr>
         <td><%= the_step.name %></td>
         <td>
-          <% if the_step.owner == nil %>
+          <% if the_step.volunteer_user_id == nil %>
             <form action="/step/<%= the_step.id %>/claim" method="post">
               <input type="hidden" name="form_volunteer_user_id" value="<%= session[:user_id] %>">
               <button>Volunteer</button>
@@ -99,7 +99,7 @@
       </div>
 
       <div class="col">
-        <a href="/proposals/<%= @proposal.id %>/add_step" class="btn btn-block btn-outline-secondary">
+        <a href="/proposals/add_step/<%= @proposal.id %>" class="btn btn-block btn-outline-secondary">
           Add Step
         </a>
       </div>

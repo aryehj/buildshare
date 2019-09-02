@@ -31,6 +31,7 @@ class StepsController < LoginController
   def claim
     the_step = Step.where(:id => params.fetch(:route_step_id)).first
     the_step.volunteer_user_id = params.fetch(:form_volunteer_user_id)
+    the_step.status ="assigned"
     save_status = the_step.save
     if save_status == true
       redirect_to("/proposals/#{the_step.proposal_id}", { :notice => "Thanks for volunteering!" })
@@ -39,12 +40,18 @@ class StepsController < LoginController
     end
   end
 
+  def add_step_form
+    render({ :template => "steps/add_step.html.erb" })
+  end
+
+
   def create
     @step = Step.new
 
-    @step.proposal_id = params.fetch(:proposal_id, nil)
-    @step.name = params.fetch(:name, nil)
-    @step.status = params.fetch(:status, nil)
+    @step.proposal_id = params.fetch(:form_proposal_id, nil)
+    @step.name = params.fetch(:form_name, nil)
+    @step.status = "unassigned"
+    @step.volunteer_user_id = params.fetch(:form_volunteer_user_id, nil)
 
     if @step.valid?
       @step.save
@@ -54,7 +61,8 @@ class StepsController < LoginController
         end
 
         format.html do
-          redirect_to("/steps", { :notice => "Step created successfully."})
+          @proposal = Proposal.where(:id => @step.proposal_id).first
+          redirect_to("/proposals/#{@step.proposal_id}", { :notice => "Step created."})
         end
       end
 

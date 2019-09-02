@@ -1,0 +1,13 @@
+<div style="margin-top: 1rem; margin-bottom: 2rem;">
+  <h1>Add Step</h1>
+  <%= Proposal.where(:id => params.fetch(:route_proposal_id)).first.name %>
+</div>
+
+<div>
+  <form action="/insert_step" method ="post">
+    <input type="hidden" name="form_proposal_id" value="<%= params.fetch(:route_proposal_id) %>">
+    <label for="name">Step Name</label>
+    <input id="name" name="form_name" type="text">
+    <button>Add Step</button>
+  </form>
+</div>
