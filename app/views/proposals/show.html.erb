@@ -2,10 +2,12 @@
     <h1>
       <%= @proposal.name %>
     </h1>
-    <% if User.where(:id => session[:user_id]).first.following(@proposal.id) == true %>
-      <a class="btn btn-block btn-outline-secondary" href="/unfollow/<%= @proposal.id %>/<%= session[:user_id] %>">Unfollow</a>
-    <% else %>
-      <a class="btn btn-block btn-primary" href="/follow/<%= @proposal.id %>/<%= session[:user_id] %>">Follow</a>
+    <% if session[:user_id].present? %>
+      <% if User.where(:id => session[:user_id]).first.following(@proposal.id) == true %>
+        <a class="btn btn-block btn-outline-secondary" href="/unfollow/<%= @proposal.id %>/<%= session[:user_id] %>">Unfollow</a>
+      <% else %>
+        <a class="btn btn-block btn-primary" href="/follow/<%= @proposal.id %>/<%= session[:user_id] %>">Follow</a>
+      <% end %>
     <% end %>
 </div>
 
@@ -156,9 +158,19 @@
     </tr>
     <% end %>
   </table>
+
 <% if session[:user_id].present? %>
 <a href="/proposals/<%= @proposal.id %>/comment" class="btn btn-block btn-outline-primary">Add Comment</a>
 <% else %>
 <a href="/sign_in" class="btn btn-block btn-outline-primary">Sign in to Comment</a>
 <% end %>
+</div>
+
+<div style="margin-bottom: 2rem; margin-top: 1rem;">
+  <h2>Followers</h2>
+  <ul>
+    <% Follower.where(:proposal_id => @proposal.id).each do |the_follower| %>
+    <li><%= User.where(:id => the_follower.user_id).first.name %></li>
+    <% end %>
+  </ul>
 </div>

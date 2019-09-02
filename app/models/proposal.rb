@@ -33,4 +33,8 @@ def needs_volunteer
   end
 end
 
+def count_followers
+  return Follower.where(:proposal_id => self.id).count
+end
+
 end

@@ -2,6 +2,11 @@
     <h1>
       Proposals
     </h1>
+    <% unless session[:user_id].present? %>
+    <a href="/sign_up" class="btn btn-block btn-primary">
+      Sign up to explore, propose and manage public projects in your community.
+    </a>
+    <% end %>
 </div>
 
 <div class="row mb-3">
@@ -31,6 +36,10 @@
 
         <th>
           Needs Volunteers
+        </th>
+
+        <th>
+          Followers
         </th>
 
         <th>
@@ -69,6 +78,18 @@
         </td>
 
         <td>
+          <%= proposal.count_followers %>
+        </td>
+
+        <td>
+          <% if session[:user_id].present? %>
+            <% if User.where(:id => session[:user_id]).first.following(proposal.id) == true %>
+              <a class="btn btn-block btn-outline-secondary" href="/unfollow/<%= proposal.id %>/<%= session[:user_id] %>">Unfollow</a>
+            <% else %>
+              <a class="btn btn-block btn-primary" href="/follow/<%= proposal.id %>/<%= session[:user_id] %>">Follow</a>
+            <% end %>
+          <% else %>
+          <% end %>
         </td>
 
       </tr>

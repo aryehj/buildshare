@@ -18,6 +18,7 @@
       <th>Status</th>
       <th>Comments</th>
       <th>Needs Volunteers</th>
+      <th>Followers</th>
     </tr>
     <% User.where(:id => session[:user_id]).first.proposals.each do |this_proposal| %>
     <tr>
@@ -25,6 +26,7 @@
       <td><%= this_proposal.status %></td>
       <td><%= this_proposal.comments.count %></td>
       <td><%= this_proposal.needs_volunteer %></td>
+      <td><%= this_proposal.count_followers %></td>
     </tr>
     <% end %>
   </table>
