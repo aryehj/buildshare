@@ -30,14 +30,14 @@ namespace(:dev) do
       	c = Comment.new
       	c.comment = Faker::Hipster.sentence
       	c.user_id = User.all.pluck(:id).sample
-      	c.proposal_id = Proposal.all.pluck(:id).sample
+      	c.proposal_id = Proposal.where.not(:status => "draft").pluck(:id).sample
       	c.save
       end
 
       100.times do
       	v = Vote.new
       	v.user_id = User.all.pluck(:id).sample
-      	v.proposal_id = Proposal.all.pluck(:id).sample
+      	v.proposal_id = Proposal.where.not(:status => "draft").pluck(:id).sample
       	v.save
       end
 
