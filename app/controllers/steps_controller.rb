@@ -28,6 +28,17 @@ class StepsController < LoginController
     end
   end
 
+  def claim
+    the_step = Step.where(:id => params.fetch(:route_step_id)).first
+    the_step.volunteer_user_id = params.fetch(:form_volunteer_user_id)
+    save_status = the_step.save
+    if save_status == true
+      redirect_to("/proposals/#{the_step.proposal_id}", { :notice => "Thanks for volunteering!" })
+    else
+      redirect_to("/proposals/#{the_step.proposal_id}", { :alert => "Something went wrong." })
+    end
+  end
+
   def create
     @step = Step.new
 

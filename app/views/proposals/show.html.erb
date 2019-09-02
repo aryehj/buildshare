@@ -71,25 +71,22 @@
       </tr>
     <% Step.where(:proposal_id => @proposal.id).each do |the_step| %>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><%= the_step.name %></td>
+        <td>
+          <% if the_step.owner == nil %>
+            <form action="/step/<%= the_step.id %>/claim" method="post">
+              <input type="hidden" name="form_volunteer_user_id" value="<%= session[:user_id] %>">
+              <button>Volunteer</button>
+            </form>
+          <% else %>
+            <%= the_step.owner %>
+          <% end %>
+        </td>
+        <td><%= the_step.status %></td>
       </tr>
-      <dd>
-        <%= the_step.name %>
-        <% if the_step.status == "unassigned" %>
-
-        <% elsif the_step.status == "assigned" %>
-          <%= the_step.owner %> <button>Mark as Done</button>
-        <% else %>
-          <%= the_step.owner %>
-        <% end %>
-      </dd>
-      <dt>
-        Status
-      </dt>
-    </table>
     <% end %>
+  </table>
+
 
 
     <% if @proposal.created_by_user.id == session[:user_id] %>

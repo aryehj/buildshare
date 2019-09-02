@@ -41,8 +41,8 @@
     <% Step.where(:volunteer_user_id => session[:user_id]).each do |this_commitment| %>
     <tr>
       <td><a href="/proposals/<%= this_commitment.proposal_id %>"><%= this_commitment.proposal.name %></a></td>
-      <td><%= this_commitment.step.name %></td>
-      <td><%= this_commitment.step.status %></td>
+      <td><%= this_commitment.name %></td>
+      <td><%= this_commitment.status %></td>
     </tr>
     <% end %>
   </table>

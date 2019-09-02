@@ -46,19 +46,19 @@ Rails.application.routes.draw do
   # Routes for the Stakeholder resource:
 
   # CREATE
-  match("/insert_stakeholder", { :controller => "stakeholders", :action => "create", :via => "post"})
+  # match("/insert_stakeholder", { :controller => "stakeholders", :action => "create", :via => "post"})
 
   # READ
-  match("/stakeholders", { :controller => "stakeholders", :action => "index", :via => "get"})
+  # match("/stakeholders", { :controller => "stakeholders", :action => "index", :via => "get"})
 
-  match("/stakeholders/:route_stakeholder_id", { :controller => "stakeholders", :action => "show", :via => "get"})
+  # match("/stakeholders/:route_stakeholder_id", { :controller => "stakeholders", :action => "show", :via => "get"})
 
   # UPDATE
 
-  match("/modify_stakeholder/:route_stakeholder_id", { :controller => "stakeholders", :action => "update", :via => "post"})
+  # match("/modify_stakeholder/:route_stakeholder_id", { :controller => "stakeholders", :action => "update", :via => "post"})
 
   # DELETE
-  match("/delete_stakeholder/:route_stakeholder_id", { :controller => "stakeholders", :action => "destroy", :via => "get"})
+  # match("/delete_stakeholder/:route_stakeholder_id", { :controller => "stakeholders", :action => "destroy", :via => "get"})
 
   #------------------------------
 
@@ -76,6 +76,7 @@ Rails.application.routes.draw do
   # UPDATE
 
   match("/modify_step/:route_step_id", { :controller => "steps", :action => "update", :via => "post"})
+  match("/steps/:route_step_id/claim", { :controller => "steps", :action => "claim", :via => "post" })
 
   # DELETE
   match("/delete_step/:route_step_id", { :controller => "steps", :action => "destroy", :via => "get"})
@@ -126,14 +127,14 @@ Rails.application.routes.draw do
   match("/insert_proposal", { :controller => "proposals", :action => "create", :via => "post"})
   match("/proposals/new",
       {
-        :controller => "proposals",
+        :controller => "proposals_private",
         :action => "form",
         :via => "get"
       }
     )
   match("proposals/edit/:route_proposal_id",
       {
-        :controller => "proposals",
+        :controller => "proposals_private",
         :action => "edit_form",
         :via => "get"
       }
@@ -148,10 +149,10 @@ Rails.application.routes.draw do
 
   # UPDATE
 
-  match("/modify_proposal/:route_proposal_id", { :controller => "proposals", :action => "update", :via => "post"})
+  match("/modify_proposal/:route_proposal_id", { :controller => "proposals_private", :action => "update", :via => "post"})
 
   # DELETE
-  match("/delete_proposal/:route_proposal_id", { :controller => "proposals", :action => "destroy", :via => "get"})
+  match("/delete_proposal/:route_proposal_id", { :controller => "proposals_private", :action => "destroy", :via => "get"})
 
   #------------------------------
 

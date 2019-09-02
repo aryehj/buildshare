@@ -1,35 +1,9 @@
-class ProposalsController < ApplicationController
-  def index
-    @proposals = Proposal.all.order({ :created_at => :desc })
+class ProposalsPrivateController < ProposalsController
 
-    respond_to do |format|
-      format.json do
-        render({ :json => @proposals.as_json })
-      end
-
-      format.html do
-        render({ :template => "proposals/index.html.erb" })
-      end
-    end
-  end
+  before_action :check_auth
 
   def form
     render({ :template => "proposals/new.html.erb" })
-  end
-
-  def show
-    the_id = params.fetch(:route_proposal_id)
-    @proposal = Proposal.where({:id => the_id }).first
-
-    respond_to do |format|
-      format.json do
-        render({ :json => @proposal.as_json })
-      end
-
-      format.html do
-        render({ :template => "proposals/show.html.erb" })
-      end
-    end
   end
 
   def edit_form
@@ -118,10 +92,6 @@ class ProposalsController < ApplicationController
         end
       end
     end
-  end
-
-  def near_me
-    render({ :template => "proposals/near_me.html.erb" })
   end
 
   def destroy

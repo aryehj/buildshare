@@ -50,23 +50,25 @@ namespace(:dev) do
       80.times do
       	s = Step.new
       	s.proposal_id = Proposal.all.pluck(:id).sample
-      	s.name =  Faker::Hipster.sentence(word_count: 3)
-        s.volunteer_user_id = User.all.pluck(:id).sample
+      	s.name = Faker::Hipster.sentence(word_count: 3)
       	s.status = ["unassigned","assigned","done"].sample
+        if s.status == "assigned" || "done" && Proposal.where(:id => s.proposal_id).first.status != "draft"
+          s.volunteer_user_id = User.all.pluck(:id).sample
+        end
       	s.save
       end
 
-      40.times do
-      	s = Stakeholder.new
-      	s.name = Faker::Name.name
-      	s.email = Faker::Internet.email
-      	s.phone = Faker::PhoneNumber.phone_number
-      	s.address = Faker::Address.full_address
-      	s.proposal_id = Step.all.pluck(:proposal_id).sample
-      	s.step_id = Step.where(:proposal_id => s.proposal_id).pluck(:id).sample
-      	s.created_by_user_id = User.all.pluck(:id).sample
-      	s.save
-      end
+      # 40.times do
+      #	 s = Stakeholder.new
+      #	 s.name = Faker::Name.name
+      #	 s.email = Faker::Internet.email
+      #	 s.phone = Faker::PhoneNumber.phone_number
+      #	 s.address = Faker::Address.full_address
+      #	 s.proposal_id = Step.all.pluck(:proposal_id).sample
+      #	 s.step_id = Step.where(:proposal_id => s.proposal_id).pluck(:id).sample
+      #	 s.created_by_user_id = User.all.pluck(:id).sample
+      #	 s.save
+      # end
 
   end
 end
