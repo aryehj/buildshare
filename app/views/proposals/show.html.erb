@@ -55,6 +55,24 @@
         <%= time_ago_in_words(@proposal.updated_at) %> ago
       </dd>
     </dl>
+
+    <% if @proposal.owned_by_user_id == session[:user_id] %>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/proposals/edit/<%= @proposal.id %>" class="btn btn-block btn-outline-secondary">
+          Edit
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_proposal/<%= @proposal.id %>" class="btn btn-block btn-outline-secondary">
+          Delete
+        </a>
+      </div>
+    </div>
+    <% end %>
+
 </div>
 
   <div>
@@ -94,9 +112,18 @@
       </tr>
     <% end %>
   </table>
+
+  <% if @proposal.owned_by_user_id == session[:user_id] %>
+
+    <a href="/proposals/add_step/<%= @proposal.id %>" class="btn btn-block btn-outline-secondary">
+      Add Step
+    </a>
+
+  <% end %>
+
 </div>
 
-<div style="margin-bottom: 2rem;">
+<div style="margin-bottom: 2rem; margin-top: 1rem;">
   <h2>Comments</h2>
   <table class="table table-sm">
     <tr>
@@ -130,27 +157,3 @@
 <a href="/sign_in" class="btn btn-block btn-outline-primary">Sign in to Comment</a>
 <% end %>
 </div>
-
-
-    <% if @proposal.owned_by_user_id == session[:user_id] %>
-
-    <div class="row mb-3">
-      <div class="col">
-        <a href="/proposals/edit/<%= @proposal.id %>" class="btn btn-block btn-outline-secondary">
-          Edit
-        </a>
-      </div>
-
-      <div class="col">
-        <a href="/proposals/add_step/<%= @proposal.id %>" class="btn btn-block btn-outline-secondary">
-          Add Step
-        </a>
-      </div>
-
-      <div class="col">
-        <a href="/delete_proposal/<%= @proposal.id %>" class="btn btn-block btn-outline-secondary">
-          Delete
-        </a>
-      </div>
-    </div>
-    <% end %>
