@@ -93,7 +93,7 @@
               <button class="btn btn-block btn-outline-primary">Volunteer</button>
             </form>
           <% elsif session[:user_id] == nil %>
-            <button><a href="/sign_in">Sign in to Volunteer</a></button>
+            <a class="btn btn-block btn-outline-primary" href="/sign_in">Sign in to Volunteer</a>
           <% else %>
             <%= the_step.owner %>
           <% end %>
