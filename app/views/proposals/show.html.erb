@@ -79,7 +79,7 @@
           <% if the_step.volunteer_user_id == nil && session[:user_id] != nil %>
             <form action="/step/<%= the_step.id %>/claim" method="post">
               <input type="hidden" name="form_volunteer_user_id" value="<%= session[:user_id] %>">
-              <button>Volunteer</button>
+              <button class="btn btn-block btn-outline-primary">Volunteer</button>
             </form>
           <% elsif session[:user_id] == nil %>
             <button><a href="/sign_in">Sign in to Volunteer</a></button>
@@ -96,6 +96,8 @@
 <div>
   <h2>Comments</h2>
   <table class="table table-sm">
+
+  </table>
 </div>
 
 

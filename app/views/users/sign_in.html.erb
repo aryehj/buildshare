@@ -3,9 +3,13 @@
 </div>
 
 <form class="form" action="/authenticate" method="post">
-  <label for="email">Email</label>
-  <input type="email" id="email" name="form_email">
-  <label for="password">Password</label>
-  <input type="password" id="password" name="password">
-  <button class="submit">Sign In</button>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="form_email" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-block btn-outline-primary">Sign In</button>
 </form>
