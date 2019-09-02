@@ -13,6 +13,7 @@
 		<tr>
 			<th>Proposal</th>
 			<th>Location</th>
+			<th>Comments</th>
 			<th>Needs Volunteers</th>
 		</tr>
 
@@ -21,6 +22,7 @@
 		<tr>
 			<td><a href ="/proposals/<%= this_proposal.id %>"><%= this_proposal.name %></a></td>
 			<td><%= this_proposal.city %>, <%= this_proposal.state %> <%= this_proposal.zipcode %></td>
+			<td><%= this_proposal.comments.count %></td>
 			<td><%= this_proposal.needs_volunteer %></td>
 		</tr>
 

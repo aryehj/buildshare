@@ -16,7 +16,6 @@
     <tr>
       <th>Name</th>
       <th>Status</th>
-      <th>Votes</th>
       <th>Comments</th>
       <th>Needs Volunteers</th>
     </tr>
@@ -24,7 +23,6 @@
     <tr>
       <td><a href="/proposals/<%= this_proposal.id %>"><%= this_proposal.name %></a></td>
       <td><%= this_proposal.status %></td>
-      <td><%= this_proposal.votes.count %></td>
       <td><%= this_proposal.comments.count %></td>
       <td><%= this_proposal.needs_volunteer %></td>
     </tr>

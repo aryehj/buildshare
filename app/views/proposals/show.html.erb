@@ -21,7 +21,7 @@
       </dd>
 
       <dt>
-        Created by
+        Owner
       </dt>
       <dd>
         <%= User.where(:id => @proposal.owned_by_user_id).first.name %>

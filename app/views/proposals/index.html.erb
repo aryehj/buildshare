@@ -30,6 +30,10 @@
         </th>
 
         <th>
+          Comments
+        </th>
+
+        <th>
           Needs Volunteers
         </th>
 
@@ -59,6 +63,10 @@
 
         <td>
           <%= time_ago_in_words(proposal.updated_at) %> ago
+        </td>
+
+        <td>
+          <%= proposal.comments.count %>
         </td>
 
         <td>

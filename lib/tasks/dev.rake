@@ -35,12 +35,12 @@ namespace(:dev) do
       	c.save
       end
 
-      100.times do
-      	v = Vote.new
-      	v.user_id = User.all.pluck(:id).sample
-      	v.proposal_id = Proposal.where.not(:status => "draft").pluck(:id).sample
-      	v.save
-      end
+      # 100.times do
+      	# v = Vote.new
+      	# v.user_id = User.all.pluck(:id).sample
+      	# v.proposal_id = Proposal.where.not(:status => "draft").pluck(:id).sample
+      	# v.save
+      # end
 
       80.times do
       	s = Step.new
