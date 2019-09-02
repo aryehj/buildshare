@@ -3,14 +3,14 @@ namespace(:dev) do
     task({ :prime => :environment }) do
       require 'faker'
 
-      10.times do
+      200.times do
         u = User.new
         u.name = Faker::Name.name
         u.email = Faker::Internet.email
         u.city = Faker::Address.city
         u.state = Faker::Address.state_abbr
-        u.zipcode = Faker::Address.zip.to_s.gsub("-","").to_i
-        u.password = "ipooped"
+        u.zipcode = Faker::Address.zip.to_s.first(5).to_i
+        u.password = "poop"
         u.save
       end
 
@@ -18,11 +18,12 @@ namespace(:dev) do
         p = Proposal.new
         p.name = Faker::Hipster.sentence(word_count: 4)
         p.description = Faker::Hipster.paragraph
-        p.city = Faker::Address.city
-        p.state = Faker::Address.state_abbr
-        p.zipcode = Faker::Address.zip.to_s.gsub("-","").to_i
         p.status = ['draft','published','project','archived'].sample
         p.owned_by_user_id = User.all.pluck(:id).sample
+        owner = User.where(:id => p.owned_by_user_id).first
+        p.city = owner.city
+        p.state = owner.state
+        p.zipcode = owner.zipcode
         p.save
       end
 
