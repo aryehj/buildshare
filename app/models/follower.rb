@@ -1,17 +1,13 @@
 # == Schema Information
 #
-# Table name: votes
+# Table name: followers
 #
 #  id          :integer          not null, primary key
-#  proposal_id :integer
-#  user_id     :integer
+#  proposal_id :string
+#  user_id     :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
-class Vote < ApplicationRecord
-
-belongs_to :proposal
-belongs_to :user
-
+class Follower < ApplicationRecord
 end

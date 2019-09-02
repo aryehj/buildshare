@@ -60,8 +60,8 @@
 
     <% u = User.where(:id => session[:user_id]).first %>
     <% relevant_proposals = u.proposals.pluck(:id) %>
-    <% relevant_proposals = relevant_proposals + u.comments.pluck(:proposal_id) %>
-    <% relevant_proposals = relevant_proposals + u.votes.pluck(:proposal_id) %>
+    <% relevant_proposals += u.comments.pluck(:proposal_id) %>
+    <% relevant_proposals += Follower.where(:user_id => u.id).pluck(:proposal_id) %>
     <% Comment.where(:proposal_id => relevant_proposals).each do |this_comment| %>
       <tr>
         <td><a href="/proposals/<%= this_comment.proposal_id %>"><%= this_comment.proposal.name %></a></td>

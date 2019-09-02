@@ -9,6 +9,7 @@
       <th>Location</th>
       <th>Comments</th>
       <th>Needs Volunteers</th>
+      <th></th>
     </tr>
   <% nearby_zips = User.where(:id => session[:user_id]).first.nearby %>
   <% Proposal.where(:zipcode => nearby_zips).each do |this_proposal| %>
@@ -17,6 +18,13 @@
       <td><%= this_proposal.city %>, <%= this_proposal.state %> <%= this_proposal.zipcode %></td>
       <td><%= this_proposal.comments.count %></td>
       <td><%= this_proposal.needs_volunteer %></td>
+      <td>
+        <% if User.where(:id => session[:user_id]).first.following(this_proposal.id) == true %>
+          <a class="btn btn-block btn-outline-secondary" href="/unfollow/<%= this_proposal.id %>/<%= session[:user_id] %>">Unfollow</a>
+        <% else %>
+          <a class="btn btn-block btn-primary" href="/follow/<%= this_proposal.id %>/<%= session[:user_id] %>">Follow</a>
+        <% end %>
+      </td>
     </tr>
   <% end %>
   </table>

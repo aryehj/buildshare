@@ -14,10 +14,6 @@
         </th>
 
         <th>
-          Description
-        </th>
-
-        <th>
           Owner
         </th>
 
@@ -37,6 +33,9 @@
           Needs Volunteers
         </th>
 
+        <th>
+        </th>
+
       </tr>
 
       <% @proposals.where(:status => "published").each do |proposal| %>
@@ -44,10 +43,6 @@
 
         <td>
           <a href="/proposals/<%= proposal.id %>"><%= proposal.name %></a>
-        </td>
-
-        <td>
-          <%= proposal.description %>
         </td>
 
         <td>
@@ -71,6 +66,9 @@
 
         <td>
           <%= proposal.needs_volunteer %>
+        </td>
+
+        <td>
         </td>
 
       </tr>

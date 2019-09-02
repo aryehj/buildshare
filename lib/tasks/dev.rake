@@ -25,6 +25,10 @@ namespace(:dev) do
         p.state = owner.state
         p.zipcode = owner.zipcode
         p.save
+        f = Follower.new
+        f.proposal_id = p.id
+        f.user_id = p.owned_by_user_id
+        f.save 
       end
 
       60.times do
@@ -42,7 +46,7 @@ namespace(:dev) do
       	# v.save
       # end
 
-      80.times do
+      100.times do
       	s = Step.new
       	s.proposal_id = Proposal.all.pluck(:id).sample
       	s.name = Faker::Hipster.sentence(word_count: 3)
@@ -56,6 +60,13 @@ namespace(:dev) do
           s.volunteer_user_id = User.all.pluck(:id).sample
         end
       	s.save
+      end
+
+      200.times do
+      	f = Follower.new
+      	f.proposal_id = Proposal.where.not(:status => "draft").pluck(:id).sample
+        f.user_id = User.where.not(:id => Proposal.where(:id => f.proposal_id).first.owned_by_user_id).pluck(:id).sample
+      	f.save
       end
 
       # 40.times do

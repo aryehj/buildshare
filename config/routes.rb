@@ -1,6 +1,23 @@
 Rails.application.routes.draw do
 
 
+  # follower routes
+ match("/follow/:route_proposal_id/:route_user_id",
+   {
+      :controller => "followers",
+      :action => "follow",
+      :via => "get"
+   }
+  )
+
+  match("/unfollow/:route_proposal_id/:route_user_id",
+    {
+       :controller => "followers",
+       :action => "unfollow",
+       :via => "get"
+    }
+   )
+
   # user routes
 
   match("/sign_up",
@@ -86,24 +103,6 @@ Rails.application.routes.draw do
 
   #------------------------------
 
-  # Routes for the Vote resource:
-
-  # CREATE
-  match("/insert_vote", { :controller => "votes", :action => "create", :via => "post"})
-
-  # READ
-  match("/votes", { :controller => "votes", :action => "index", :via => "get"})
-
-  match("/votes/:route_vote_id", { :controller => "votes", :action => "show", :via => "get"})
-
-  # UPDATE
-
-  match("/modify_vote/:route_vote_id", { :controller => "votes", :action => "update", :via => "post"})
-
-  # DELETE
-  match("/delete_vote/:route_vote_id", { :controller => "votes", :action => "destroy", :via => "get"})
-
-  #------------------------------
 
   # Routes for the Comment resource:
 

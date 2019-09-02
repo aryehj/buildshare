@@ -49,6 +49,12 @@ class ProposalsController < ApplicationController
 
     if @proposal.valid?
       @proposal.save
+
+      f = Follower.new
+      f.proposal_id = @proposal.id
+      f.user_id = @proposal.owned_by_user_id
+      f.save
+      
       respond_to do |format|
         format.json do
           render({ :json => @proposal.as_json })
