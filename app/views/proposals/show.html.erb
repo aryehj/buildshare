@@ -115,7 +115,7 @@
     <% end %>
   </table>
 <% if session[:user_id].present? %>
-<a href="/insert_comment" class="btn btn-block btn-outline-primary">Add Comment</a>
+<a href="/proposals/<%= @proposal.id %>/comment" class="btn btn-block btn-outline-primary">Add Comment</a>
 <% else %>
 <a href="/sign_in" class="btn btn-block btn-outline-primary">Sign in to Comment</a>
 <% end %>

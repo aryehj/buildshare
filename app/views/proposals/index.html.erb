@@ -1,76 +1,9 @@
-<div class="row mb-3">
-  <div class="col-md-12">
+<div style="margin-top: 1rem; margin-bottom: 2rem;">
     <h1>
-      List of all proposals
+      Proposals
     </h1>
-  </div>
 </div>
 
-<hr>
-
-<div class="row mb-3">
-  <div class="col-md-8 offset-md-2">
-    <h2>
-      Add a new proposal
-    </h2>
-
-    <form action="/insert_proposal" method="post">
-      <div class="form-group">
-        <label for="name">
-          Name
-        </label>
-
-        <textarea id="name" name="name" class="form-control" rows="3"></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="description">
-          Description
-        </label>
-
-        <textarea id="description" name="description" class="form-control" rows="3"></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="status">
-          Status
-        </label>
-
-        <input type="text" id="status" name="status" class="form-control">
-      </div>
-
-      <div class="form-group">
-        <label for="owned_by_user_id">
-          Owned by user
-        </label>
-
-        <input type="text" id="owned_by_user_id" name="owned_by_user_id" class="form-control">
-      </div>
-
-      <div class="form-group">
-        <label for="state">
-          State
-        </label>
-
-        <input type="text" id="state" name="state" class="form-control">
-      </div>
-
-      <div class="form-group">
-        <label for="zipcode">
-          Zipcode
-        </label>
-
-        <input type="text" id="zipcode" name="zipcode" class="form-control">
-      </div>
-
-      <button class="btn btn-block btn-outline-secondary">
-        Create proposal
-      </button>
-    </form>
-  </div>
-</div>
-
-<hr>
 <div class="row mb-3">
   <div class="col-md-12">
     <table class="table">
@@ -92,19 +25,11 @@
         </th>
 
         <th>
-          Owned by user
+          Owned by
         </th>
 
         <th>
-          State
-        </th>
-
-        <th>
-          Zipcode
-        </th>
-
-        <th>
-          Created at
+          Location
         </th>
 
         <th>
@@ -134,27 +59,23 @@
         </td>
 
         <td>
-          <%= proposal.owned_by_user_id %>
+          <%= User.where(:id => proposal.owned_by_user_id).first.name %>
         </td>
 
         <td>
-          <%= proposal.state %>
-        </td>
-
-        <td>
+          <%= proposal.city %>,
+          <%= proposal.state %> 
           <%= proposal.zipcode %>
         </td>
 
-        <td>
-          <%= time_ago_in_words(proposal.created_at) %> ago
-        </td>
+
         <td>
           <%= time_ago_in_words(proposal.updated_at) %> ago
         </td>
 
         <td>
           <a href="/proposals/<%= proposal.id %>">
-            Show details
+            View
           </a>
         </td>
       </tr>

@@ -67,6 +67,7 @@ Rails.application.routes.draw do
 
   # CREATE
   match("/insert_step", { :controller => "steps", :action => "create", :via => "post"})
+
   match("/proposals/add_step/:route_proposal_id", { :controller => "steps", :action => "add_step_form", :via => "get" })
 
   # READ
@@ -107,6 +108,8 @@ Rails.application.routes.draw do
 
   # CREATE
   match("/insert_comment", { :controller => "comments", :action => "create", :via => "post"})
+  
+  match("/proposals/:route_proposal_id/comment", { :controller => "comments", :action => "comment_form", :via => "get" })
 
   # READ
   match("/comments", { :controller => "comments", :action => "index", :via => "get"})

@@ -23,7 +23,8 @@ class CommentsController < LoginController
       end
 
       format.html do
-        render({ :template => "comments/show.html.erb" })
+        @comment = Comment.where(:id => params.fetch(:route_comment_id)).first
+        render({ :template => "comments/edit.html.erb" })
       end
     end
   end
@@ -43,7 +44,7 @@ class CommentsController < LoginController
         end
 
         format.html do
-          redirect_to("/comments", { :notice => "Comment created successfully."})
+          redirect_to("/proposals/#{@comment.proposal_id}", { :notice => "Comment created."})
         end
       end
 
@@ -54,10 +55,15 @@ class CommentsController < LoginController
         end
 
         format.html do
-          redirect_to("/comments", { :notice => "Comment failed to create successfully."})
+          redirect_to("/proposals/#{@comment.proposal_id}", { :alert => "Unable to create comment."})
         end
       end
     end
+  end
+
+  def comment_form
+    @proposal = Proposal.where(:id => params.fetch(:route_proposal_id)).first
+    render({ :template => "comments/create.html.erb" })
   end
 
   def update
@@ -82,7 +88,7 @@ class CommentsController < LoginController
         end
 
         format.html do
-          redirect_to("/comments/#{@comment.id}", {:notice => "Comment updated successfully."})
+          redirect_to("/proposals/#{@comment.proposal_id}", {:notice => "Comment updated."})
         end
       end
     else
