@@ -7,13 +7,6 @@
 <div>
     <dl>
       <dt>
-        Name
-      </dt>
-      <dd>
-        <%= @proposal.name %>
-      </dd>
-
-      <dt>
         Description
       </dt>
       <dd>
@@ -93,15 +86,43 @@
   </table>
 </div>
 
-<div>
+<div style="margin-bottom: 2rem;">
   <h2>Comments</h2>
   <table class="table table-sm">
-
+    <tr>
+      <th>Comment</th>
+      <th>Author</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% Comment.where(:proposal_id => @proposal.id).each do |the_comment| %>
+    <tr>
+      <td><%= the_comment.comment %></td>
+      <td><%= User.where(:id => the_comment.user_id).first.name %></td>
+      <% if the_comment.user_id == session[:user_id] %>
+      <td>
+        <a href="/comments/<%= the_comment.id %>" class="btn btn-block btn-outline-secondary">Edit</a>
+      </td>
+      <td>
+        <a href="/delete_comment/<%= the_comment.id %>" class="btn btn-block btn-outline-secondary">Delete</a>
+      </td>
+      <% elsif @proposal.owned_by_user_id == session[:user_id] %>
+      <td>
+        <a href="/delete_comment/<%= the_comment.id %>" class="btn btn-block btn-outline-secondary">Delete</a>
+      </td>
+      <% end %>
+    </tr>
+    <% end %>
   </table>
+<% if session[:user_id].present? %>
+<a href="/insert_comment" class="btn btn-block btn-outline-primary">Add Comment</a>
+<% else %>
+<a href="/sign_in" class="btn btn-block btn-outline-primary">Sign in to Comment</a>
+<% end %>
 </div>
 
 
-    <% if @proposal.created_by_user.id == session[:user_id] %>
+    <% if @proposal.owned_by_user_id == session[:user_id] %>
 
     <div class="row mb-3">
       <div class="col">

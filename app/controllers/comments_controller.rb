@@ -111,7 +111,7 @@ class CommentsController < LoginController
       end
 
       format.html do
-        redirect_to("/comments", {:notice => "Comment deleted successfully."})
+        redirect_to("/proposals/#{@comment.proposal_id}", {:notice => "Comment deleted."})
       end
     end
   end
