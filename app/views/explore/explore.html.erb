@@ -12,16 +12,16 @@
 	<table class="table table-sm">
 		<tr>
 			<th>Proposal</th>
-			<th>City</th>
-			<th>State</th>
+			<th>Location</th>
+			<th>Needs Volunteers</th>
 		</tr>
 
-		<% Proposal.all.each do |this_proposal| %>
+		<% Proposal.where(:status => "published").each do |this_proposal| %>
 
 		<tr>
 			<td><a href ="/proposals/<%= this_proposal.id %>"><%= this_proposal.name %></a></td>
-			<td><%= this_proposal.city %></td>
-			<td><%= this_proposal.state %></td>
+			<td><%= this_proposal.city %>, <%= this_proposal.state %> <%= this_proposal.zipcode %></td>
+			<td><%= this_proposal.needs_volunteer %></td>
 		</tr>
 
 		<% end %>

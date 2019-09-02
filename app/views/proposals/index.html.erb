@@ -18,10 +18,6 @@
         </th>
 
         <th>
-          Status
-        </th>
-
-        <th>
           Owner
         </th>
 
@@ -31,6 +27,10 @@
 
         <th>
           Updated
+        </th>
+
+        <th>
+          Needs Volunteers
         </th>
 
       </tr>
@@ -47,10 +47,6 @@
         </td>
 
         <td>
-          <%= proposal.status %>
-        </td>
-
-        <td>
           <%= User.where(:id => proposal.owned_by_user_id).first.name %>
         </td>
 
@@ -63,6 +59,10 @@
 
         <td>
           <%= time_ago_in_words(proposal.updated_at) %> ago
+        </td>
+
+        <td>
+          <%= proposal.needs_volunteer %>
         </td>
 
       </tr>
