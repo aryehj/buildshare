@@ -61,7 +61,7 @@ namespace(:dev) do
       	s.save
       end
 
-      200.times do
+      100.times do
       	f = Follower.new
       	f.proposal_id = live_proposal_ids.sample
         f.user_id = User.where.not(:id => Proposal.where(:id => f.proposal_id).first.owned_by_user_id).pluck(:id).sample
