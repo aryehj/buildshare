@@ -19,10 +19,6 @@
         </th>
 
         <th>
-          Owner
-        </th>
-
-        <th>
           Location
         </th>
 
@@ -52,10 +48,6 @@
 
         <td>
           <a href="/proposals/<%= proposal.id %>"><%= proposal.name %></a>
-        </td>
-
-        <td>
-          <%= User.where(:id => proposal.owned_by_user_id).first.name %>
         </td>
 
         <td>
