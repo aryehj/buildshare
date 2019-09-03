@@ -19,17 +19,17 @@
 
   <div class="form-group">
     <label for="city">City</label>
-    <input type="text" id="city" name="city" class="form-control">
+    <input type="text" id="city" name="city" class="form-control" value="<%= User.where(:id => session[:user_id]).first.city %>">
   </div>
 
   <div class="form-group">
     <label for="state">State</label>
-    <input type="text" id="state" name="state" class="form-control">
+    <input type="text" id="state" name="state" class="form-control" value="<%= User.where(:id => session[:user_id]).first.state %>">
   </div>
 
   <div class="form-group">
     <label for="zipcode">ZIP</label>
-    <input type="text" id="zipcode" name="zipcode" class="form-control">
+    <input type="text" id="zipcode" name="zipcode" class="form-control" value="<%= User.where(:id => session[:user_id]).first.zipcode %>">
   </div>
 
   <button class="btn btn-block btn-outline-primary">
