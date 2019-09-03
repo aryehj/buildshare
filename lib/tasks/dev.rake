@@ -16,7 +16,7 @@ namespace(:dev) do
 
       user_ids = User.all.pluck(:id)
 
-      20.times do
+      30.times do
         p = Proposal.new
         p.name = Faker::Hipster.sentence(word_count: 4)
         p.description = Faker::Hipster.paragraph
@@ -36,7 +36,7 @@ namespace(:dev) do
       live_proposal_ids = Proposal.where.not(:status => "draft").pluck(:id)
       proposal_ids = Proposal.all.pluck(:id)
 
-      60.times do
+      100.times do
       	c = Comment.new
       	c.comment = Faker::Hipster.sentence
       	c.user_id = user_ids.sample
@@ -45,10 +45,10 @@ namespace(:dev) do
       end
 
 
-      100.times do
+      120.times do
       	s = Step.new
       	s.proposal_id = proposal_ids.sample
-      	s.name = Faker::Hipster.sentence(word_count: 3)
+      	s.name = Faker::Marketing.buzzwords
         p = Proposal.where(:id => s.proposal_id).first
         if p.status == "draft"
           s.status = "unassigned"
