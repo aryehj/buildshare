@@ -1,6 +1,6 @@
 <div style="margin-top: 1rem; margin-bottom: 2rem;">
     <h1>
-      Proposals
+      Proposals Matching "<%= @search_string %>"
     </h1>
 
     <form action="/proposals/search" method="post">
@@ -52,7 +52,7 @@
 
       </tr>
 
-      <% @proposals.where(:status => "published").each do |proposal| %>
+      <% @matching_proposals.where(:status => "published").each do |proposal| %>
       <tr>
 
         <td>

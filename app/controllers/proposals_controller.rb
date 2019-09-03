@@ -54,7 +54,7 @@ class ProposalsController < ApplicationController
       f.proposal_id = @proposal.id
       f.user_id = @proposal.owned_by_user_id
       f.save
-      
+
       respond_to do |format|
         format.json do
           render({ :json => @proposal.as_json })
@@ -128,6 +128,15 @@ class ProposalsController < ApplicationController
 
   def near_me
     render({ :template => "proposals/near_me.html.erb" })
+  end
+
+  def search
+    @search_string = params.fetch(:form_search_string)
+    matching_proposal_ids = Proposal.where(:city => @search_string).pluck(:id)
+    matching_proposal_ids += Proposal.where(:state => @search_string).pluck(:id)
+    matching_proposal_ids += Proposal.where(:zipcode => @search_string).pluck(:id)
+    @matching_proposals = Proposal.where(:id => matching_proposal_ids)
+    render({ :template => "proposals/search_results.html.erb" })
   end
 
   def destroy

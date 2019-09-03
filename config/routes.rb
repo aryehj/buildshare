@@ -149,6 +149,8 @@ Rails.application.routes.draw do
 
   match("/proposals/near_me", { :controller => "proposals", :action => "near_me", via: "get"})
 
+  match("/proposals/search", { :controller => "proposals", :action => "search", via: "post" })
+
   match("/proposals/:route_proposal_id", { :controller => "proposals", :action => "show", :via => "get"})
 
   # UPDATE
