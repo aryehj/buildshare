@@ -97,13 +97,6 @@ ActiveRecord::Schema.define(version: 20190901231316) do
     t.string "password_digest"
   end
 
-  create_table "votes", force: :cascade do |t|
-    t.integer "proposal_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "followers", force: :cascade do |t|
     t.integer "proposal_id"
     t.integer "user_id"
