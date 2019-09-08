@@ -3,8 +3,8 @@
 # Table name: followers
 #
 #  id          :integer          not null, primary key
-#  proposal_id :string
-#  user_id     :string
+#  proposal_id :integer
+#  user_id     :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
