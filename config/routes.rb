@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  # follower routes
+# Follower Routes
  match("/follow/:route_proposal_id/:route_user_id",
    {
       :controller => "followers",
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     }
    )
 
-  # user routes
+# User Routes
 
   match("/sign_up",
     {
@@ -60,7 +60,7 @@ Rails.application.routes.draw do
     }
   )
 
-  
+
   #------------------------------
 
 
@@ -68,13 +68,11 @@ Rails.application.routes.draw do
 
   # CREATE
   match("/insert_step", { :controller => "steps", :action => "create", :via => "post"})
-
   match("/proposals/add_step/:route_proposal_id", { :controller => "steps", :action => "add_step_form", :via => "get" })
 
   # READ
-  match("/steps", { :controller => "steps", :action => "index", :via => "get"})
-
-  match("/steps/:route_step_id", { :controller => "steps", :action => "show", :via => "get"})
+  # match("/steps", { :controller => "steps", :action => "index", :via => "get"})
+  # match("/steps/:route_step_id", { :controller => "steps", :action => "show", :via => "get"})
 
   # UPDATE
 
@@ -92,16 +90,13 @@ Rails.application.routes.draw do
 
   # CREATE
   match("/insert_comment", { :controller => "comments", :action => "create", :via => "post"})
-
   match("/proposals/:route_proposal_id/comment", { :controller => "comments", :action => "comment_form", :via => "get" })
 
   # READ
-  match("/comments", { :controller => "comments", :action => "index", :via => "get"})
-
-  match("/comments/:route_comment_id", { :controller => "comments", :action => "show", :via => "get"})
+  # match("/comments", { :controller => "comments", :action => "index", :via => "get"})
+  # match("/comments/:route_comment_id", { :controller => "comments", :action => "show", :via => "get"})
 
   # UPDATE
-
   match("/modify_comment/:route_comment_id", { :controller => "comments", :action => "update", :via => "post"})
 
   # DELETE
@@ -130,11 +125,8 @@ Rails.application.routes.draw do
 
   # READ
   match("/proposals", { :controller => "proposals", :action => "index", :via => "get"})
-
   match("/proposals/near_me", { :controller => "proposals", :action => "near_me", via: "get"})
-
   match("/proposals/search", { :controller => "proposals", :action => "search", via: "post" })
-
   match("/proposals/:route_proposal_id", { :controller => "proposals", :action => "show", :via => "get"})
 
   # UPDATE
