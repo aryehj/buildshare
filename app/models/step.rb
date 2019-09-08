@@ -14,7 +14,7 @@
 class Step < ApplicationRecord
 
 belongs_to :proposal
-belongs_to :volunteer_user, class_name: :User
+belongs_to :volunteer, class_name: :User
 
 def owner
   return User.where(:id => self.volunteer_user_id).first.name

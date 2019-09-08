@@ -19,7 +19,9 @@ class User < ApplicationRecord
 has_secure_password
 
 has_many :comments, :dependent => :nullify
-has_many :proposals, :foreign_key => "owned_by_user_id", :dependent => :nullify
+has_many :proposals, :foreign_key => "owner_id", :dependent => :nullify
+has_many :steps, :foreign_key => "volunteer_id", :dependent => :nullify
+has_many :followers, :dependent => :destroy
 
 validates(:email,
   {
