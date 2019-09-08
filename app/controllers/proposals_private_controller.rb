@@ -61,7 +61,7 @@ class ProposalsPrivateController < ProposalsController
     @proposal.status = params.fetch(:status, @proposal.status)
 
 
-    @proposal.owned_by_user_id = params.fetch(:owner_id, @proposal.owner_id)
+    @proposal.owner_id = params.fetch(:owner_id, @proposal.owner_id)
 
 
     @proposal.state = params.fetch(:state, @proposal.state)
