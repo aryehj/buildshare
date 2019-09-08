@@ -21,7 +21,7 @@ namespace(:dev) do
         p.name = Faker::Hipster.sentence(word_count: 4)
         p.description = Faker::Hipster.paragraph
         p.status = ['draft','published','archived'].sample
-        p.owned_by_user_id = user_ids.sample
+        p.owner_id = user_ids.sample
         owner = User.where(:id => p.owned_by_user_id).first
         p.city = owner.city
         p.state = owner.state
@@ -29,7 +29,7 @@ namespace(:dev) do
         p.save
         f = Follower.new
         f.proposal_id = p.id
-        f.user_id = p.owned_by_user_id
+        f.user_id = p.owner_id
         f.save
       end
 
@@ -56,7 +56,7 @@ namespace(:dev) do
       	  s.status = ["unassigned","assigned","done"].sample
         end
         if s.status != "unassigned"
-          s.volunteer_user_id = user_ids.sample
+          s.volunteer_id = user_ids.sample
         end
       	s.save
       end
@@ -64,21 +64,9 @@ namespace(:dev) do
       500.times do
       	f = Follower.new
       	f.proposal_id = live_proposal_ids.sample
-        f.user_id = User.where.not(:id => Proposal.where(:id => f.proposal_id).first.owned_by_user_id).pluck(:id).sample
+        f.user_id = User.where.not(:id => Proposal.where(:id => f.proposal_id).first.owner_id).pluck(:id).sample
       	f.save
       end
-
-      # 40.times do
-      #	 s = Stakeholder.new
-      #	 s.name = Faker::Name.name
-      #	 s.email = Faker::Internet.email
-      #	 s.phone = Faker::PhoneNumber.phone_number
-      #	 s.address = Faker::Address.full_address
-      #	 s.proposal_id = Step.all.pluck(:proposal_id).sample
-      #	 s.step_id = Step.where(:proposal_id => s.proposal_id).pluck(:id).sample
-      #	 s.created_by_user_id = User.all.pluck(:id).sample
-      #	 s.save
-      # end
 
   end
 end
