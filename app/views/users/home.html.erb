@@ -20,7 +20,7 @@
       <th>Needs Volunteers</th>
       <th>Followers</th>
     </tr>
-    <% User.where(:id => session[:user_id]).first.proposals.each do |this_proposal| %>
+    <% @user.proposals.each do |this_proposal| %>
     <tr>
       <td><a href="/proposals/<%= this_proposal.id %>"><%= this_proposal.name %></a></td>
       <td><%= this_proposal.status %></td>
@@ -40,11 +40,11 @@
       <th>Step</th>
       <th>Status</th>
     </tr>
-    <% Step.where(:volunteer_user_id => session[:user_id]).each do |this_commitment| %>
+    <% @user.steps.each do |this_step| %>
     <tr>
-      <td><a href="/proposals/<%= this_commitment.proposal_id %>"><%= this_commitment.proposal.name %></a></td>
-      <td><%= this_commitment.name %></td>
-      <td><%= this_commitment.status %></td>
+      <td><a href="/proposals/<%= this_step.proposal_id %>"><%= this_step.proposal.name %></a></td>
+      <td><%= this_step.name %></td>
+      <td><%= this_step.status %></td>
     </tr>
     <% end %>
   </table>
@@ -60,10 +60,9 @@
       <th>Time</th>
     </tr>
 
-    <% u = User.where(:id => session[:user_id]).first %>
-    <% relevant_proposals = u.proposals.pluck(:id) %>
-    <% relevant_proposals += u.comments.pluck(:proposal_id) %>
-    <% relevant_proposals += Follower.where(:user_id => u.id).pluck(:proposal_id) %>
+    <% relevant_proposals = @user.proposals.pluck(:id) %>
+    <% relevant_proposals += @user.comments.pluck(:proposal_id) %>
+    <% relevant_proposals += @user.followers.pluck(:proposal_id) %>
     <% Comment.where(:proposal_id => relevant_proposals).each do |this_comment| %>
       <tr>
         <td><a href="/proposals/<%= this_comment.proposal_id %>"><%= this_comment.proposal.name %></a></td>

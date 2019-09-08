@@ -23,7 +23,7 @@ belongs_to :owner, class_name: :User
 
 def needs_volunteer
   steps = self.steps
-  needy_steps = steps.where(:volunteer_user_id => nil)
+  needy_steps = steps.where(:volunteer_id => nil)
   if needy_steps.count == 0
     return "No"
   else

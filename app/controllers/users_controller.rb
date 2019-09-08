@@ -5,6 +5,7 @@ def sign_up_form
 end
 
 def sign_out
+  @user = nil
   reset_session
   redirect_to("/",
     { :notice => "Signed out." }
@@ -38,6 +39,7 @@ end
   end
 
   def home
+    @user = User.where(:id => session[:user_id]).first
     render({ :template => "users/home.html.erb" })
   end
 

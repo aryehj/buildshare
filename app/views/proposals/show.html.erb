@@ -31,7 +31,7 @@
         Owner
       </dt>
       <dd>
-        <%= User.where(:id => @proposal.owned_by_user_id).first.name %>
+        <%= @proposal.owner.name %>
       </dd>
 
       <dt>
@@ -63,7 +63,7 @@
       </dd>
     </dl>
 
-    <% if @proposal.owned_by_user_id == session[:user_id] %>
+    <% if @proposal.owner.id == session[:user_id] %>
 
     <div class="row mb-3">
       <div class="col">
@@ -90,22 +90,22 @@
         <th>Owner</th>
         <th>Status</th>
       </tr>
-    <% Step.where(:proposal_id => @proposal.id).each do |the_step| %>
+    <% @proposal.steps.each do |the_step| %>
       <tr>
         <td><%= the_step.name %></td>
         <td>
-          <% if the_step.volunteer_user_id == nil && session[:user_id] != nil %>
+          <% if the_step.volunteer == nil && session[:user_id] != nil %>
             <form action="/step/<%= the_step.id %>/claim" method="post">
               <input type="hidden" name="form_volunteer_user_id" value="<%= session[:user_id] %>">
               <button class="btn btn-block btn-outline-primary">Volunteer</button>
             </form>
-          <% elsif session[:user_id] == nil && the_step.volunteer_user_id == nil %>
+          <% elsif session[:user_id] == nil && the_step.volunteer == nil %>
             <a class="btn btn-block btn-outline-primary" href="/sign_in">Sign in to Volunteer</a>
           <% else %>
-            <%= the_step.owner %>
+            <%= the_step.volunteer.name %>
           <% end %>
         </td>
-        <% if the_step.status != "done" && (the_step.volunteer_user_id || @proposal.owned_by_user_id) == session[:user_id] %>
+        <% if the_step.status != "done" && (the_step.volunteer_id || @proposal.owner.id) == session[:user_id] %>
           <td>
             <form action="/step/<%= the_step.id %>/done" method="post">
               <button class="btn btn-block btn-outline-secondary">
@@ -120,7 +120,7 @@
     <% end %>
   </table>
 
-  <% if @proposal.owned_by_user_id == session[:user_id] %>
+  <% if @proposal.owner.id == session[:user_id] %>
 
     <a href="/proposals/add_step/<%= @proposal.id %>" class="btn btn-block btn-outline-secondary">
       Add Step
@@ -142,7 +142,7 @@
     <% Comment.where(:proposal_id => @proposal.id).each do |the_comment| %>
     <tr>
       <td><%= the_comment.comment %></td>
-      <td><%= User.where(:id => the_comment.user_id).first.name %></td>
+      <td><%= the_comment.user.name %></td>
       <% if the_comment.user_id == session[:user_id] %>
       <td>
         <a href="/comments/<%= the_comment.id %>" class="btn btn-block btn-outline-secondary">Edit</a>
@@ -150,7 +150,7 @@
       <td>
         <a href="/delete_comment/<%= the_comment.id %>" class="btn btn-block btn-outline-secondary">Delete</a>
       </td>
-      <% elsif @proposal.owned_by_user_id == session[:user_id] %>
+      <% elsif @proposal.owner.id == session[:user_id] %>
       <td>
         <a href="/delete_comment/<%= the_comment.id %>" class="btn btn-block btn-outline-secondary">Delete</a>
       </td>
@@ -169,8 +169,8 @@
 <div style="margin-bottom: 2rem; margin-top: 1rem;">
   <h2>Followers</h2>
   <ul>
-    <% Follower.where(:proposal_id => @proposal.id).each do |the_follower| %>
-    <li><%= User.where(:id => the_follower.user_id).first.name %></li>
+    <% @proposal.followers.each do |the_follower| %>
+    <li><%= the_follower.user.name %></li>
     <% end %>
   </ul>
 </div>
