@@ -60,23 +60,7 @@ Rails.application.routes.draw do
     }
   )
 
-  # Routes for the Stakeholder resource:
-
-  # CREATE
-  # match("/insert_stakeholder", { :controller => "stakeholders", :action => "create", :via => "post"})
-
-  # READ
-  # match("/stakeholders", { :controller => "stakeholders", :action => "index", :via => "get"})
-
-  # match("/stakeholders/:route_stakeholder_id", { :controller => "stakeholders", :action => "show", :via => "get"})
-
-  # UPDATE
-
-  # match("/modify_stakeholder/:route_stakeholder_id", { :controller => "stakeholders", :action => "update", :via => "post"})
-
-  # DELETE
-  # match("/delete_stakeholder/:route_stakeholder_id", { :controller => "stakeholders", :action => "destroy", :via => "get"})
-
+  
   #------------------------------
 
 
