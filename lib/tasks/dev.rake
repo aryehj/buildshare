@@ -22,7 +22,7 @@ namespace(:dev) do
         p.description = Faker::Hipster.paragraph
         p.status = ['draft','published','archived'].sample
         p.owner_id = user_ids.sample
-        owner = User.where(:id => p.owned_by_user_id).first
+        owner = p.owner
         p.city = owner.city
         p.state = owner.state
         p.zipcode = owner.zipcode
@@ -49,7 +49,8 @@ namespace(:dev) do
       	s = Step.new
       	s.proposal_id = proposal_ids.sample
       	s.name = Faker::Marketing.buzzwords
-        p = Proposal.where(:id => s.proposal_id).first
+  #      p = Proposal.where(:id => s.proposal_id).first
+        p = s.proposal
         if p.status == "draft"
           s.status = "unassigned"
         else
@@ -64,7 +65,8 @@ namespace(:dev) do
       500.times do
       	f = Follower.new
       	f.proposal_id = live_proposal_ids.sample
-        f.user_id = User.where.not(:id => Proposal.where(:id => f.proposal_id).first.owner_id).pluck(:id).sample
+        f.proposal = Proposal.where(:id => f.proposal_id).first
+        f.user_id = User.where.not(:id => f.proposal.owner.id).pluck(:id).sample
       	f.save
       end
 
