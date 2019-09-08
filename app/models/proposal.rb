@@ -2,16 +2,16 @@
 #
 # Table name: proposals
 #
-#  id               :integer          not null, primary key
-#  name             :text
-#  description      :text
-#  status           :string
-#  owned_by_user_id :integer
-#  state            :string
-#  zipcode          :string
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  city             :string
+#  id          :integer          not null, primary key
+#  name        :text
+#  description :text
+#  status      :string
+#  owner_id    :integer
+#  state       :string
+#  zipcode     :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  city        :string
 #
 
 class Proposal < ApplicationRecord
