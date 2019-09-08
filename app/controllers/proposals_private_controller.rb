@@ -20,6 +20,7 @@ class ProposalsPrivateController < ProposalsController
     @proposal.owned_by_user_id = params.fetch(:owned_by_user_id, nil)
     @proposal.state = params.fetch(:state, nil)
     @proposal.zipcode = params.fetch(:zipcode, nil)
+    @proposal.city = params.fetch(:city, nil)
 
     if @proposal.valid?
       @proposal.save
@@ -67,6 +68,9 @@ class ProposalsPrivateController < ProposalsController
 
 
     @proposal.zipcode = params.fetch(:zipcode, @proposal.zipcode)
+
+    @proposal.city = params.fetch(:zipcode, @proposal.city)
+
 
 
     if @proposal.valid?
