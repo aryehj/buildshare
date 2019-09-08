@@ -18,7 +18,8 @@ class Proposal < ApplicationRecord
 
 has_many :steps, :dependent => :destroy
 has_many :comments, :dependent => :destroy
-belongs_to :user, :foreign_key => "owned_by_user_id"
+has_many :followers, :dependent => :destroy
+belongs_to :owned_by_user_id, class_name: :User
 
 def needs_volunteer
   steps = self.steps

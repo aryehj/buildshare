@@ -13,8 +13,8 @@
 
 class Step < ApplicationRecord
 
-belongs_to :proposal, :foreign_key => "proposal_id"
-has_one :volunteer, class_name: "User", :foreign_key => "volunteer_user_id"
+belongs_to :proposal
+belongs_to :volunteer_user_id, class_name: :User
 
 def owner
   return User.where(:id => self.volunteer_user_id).first.name
