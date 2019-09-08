@@ -13,9 +13,8 @@
 
 class Step < ApplicationRecord
 
-belongs_to :proposal
-# has_one :commitment, :dependent => :destroy
-# has_one :stakeholder, :dependent => :nullify
+belongs_to :proposal, :foreign_key => "proposal_id"
+has_one :volunteer, class_name: "User", :foreign_key => "volunteer_user_id"
 
 def owner
   return User.where(:id => self.volunteer_user_id).first.name

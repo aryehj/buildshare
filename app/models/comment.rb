@@ -12,7 +12,7 @@
 
 class Comment < ApplicationRecord
 
-belongs_to :proposal
-belongs_to :user
+belongs_to :proposal, :foreign_key => "proposal_id"
+belongs_to :user, :foreign_key => "user_id"
 
 end
