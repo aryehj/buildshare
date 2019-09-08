@@ -29,20 +29,16 @@ gem 'hashdiff', [">= 1.0.0.beta1"]
 group :development, :test do
   gem 'awesome_print'
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
-  gem 'console_ip_whitelist', github: 'firstdraft/console_ip_whitelist'
   gem 'dotenv-rails'
-  gem 'grade_runner', github: 'firstdraft/grade_runner'
   gem 'pry-rails'
   gem 'sqlite3', '>= 1.3.6'
   gem 'table_print'
-  gem 'web_git', github: 'firstdraft/web_git'
 end
 
 group :development do
   gem "annotate"
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem "draft_generators", github: "firstdraft/draft_generators", branch: "spring-2019"
   gem "letter_opener"
   gem "listen", ">= 3.0.5"
   gem "meta_request"

@@ -1,39 +1,4 @@
 GIT
-  remote: https://github.com/firstdraft/console_ip_whitelist.git
-  revision: 58b993b50f0ca64717ae93eebdfebd95c833bb97
-  specs:
-    console_ip_whitelist (0.1.0)
-      rails
-
-GIT
-  remote: https://github.com/firstdraft/draft_generators.git
-  revision: b18e9dde563fc195298a046452ad4fe745d3f837
-  branch: spring-2019
-  specs:
-    draft_generators (0.0.3)
-      devise
-
-GIT
-  remote: https://github.com/firstdraft/grade_runner.git
-  revision: 55b5cbe74fc6151ce221c638c7fc8ef0d1bb15e6
-  specs:
-    grade_runner (0.0.3.pre.3)
-
-GIT
-  remote: https://github.com/firstdraft/web_git.git
-  revision: a0dd3aa71735515280c2378c0abb99b1ee9895d8
-  specs:
-    web_git (0.0.4)
-      diffy
-      git_clone_url
-      jquery-rails
-      octicons_helper
-      tether-rails
-      turbolinks (~> 5)
-      tzinfo-data
-      yard (>= 0.9.20)
-
-GIT
   remote: https://github.com/stympy/faker.git
   revision: 515fdbfe1091c30c272ab1214081414353e4180d
   branch: master
@@ -167,7 +132,6 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
-    diffy (3.3.0)
     dotenv (2.7.5)
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
@@ -183,8 +147,6 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
-    git_clone_url (2.0.0)
-      uri-ssh_git (>= 2.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     has_scope (0.7.2)
@@ -242,11 +204,6 @@ GEM
     nio4r (2.5.1)
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
-    octicons (9.1.1)
-      nokogiri (>= 1.6.3.1)
-    octicons_helper (9.1.1)
-      octicons (= 9.1.1)
-      rails
     orm_adapter (0.5.0)
     pg (1.1.4)
     polyamorous (2.3.0)
@@ -364,21 +321,13 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.4.1)
     table_print (1.5.6)
-    tether-rails (1.4.0)
-      rails (>= 3.1)
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
-    turbolinks (5.2.0)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2019.2)
-      tzinfo (>= 1.0.0)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
-    uri-ssh_git (2.0.0)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (4.0.1)
@@ -395,7 +344,6 @@ GEM
     websocket-extensions (0.1.4)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    yard (0.9.20)
     zeitwerk (2.1.10)
 
 PLATFORMS
@@ -412,13 +360,10 @@ DEPENDENCIES
   byebug
   capybara
   coffee-rails
-  console_ip_whitelist!
   devise
   dotenv-rails
-  draft_generators!
   factory_bot_rails
   faker!
-  grade_runner!
   hashdiff (>= 1.0.0.beta1)
   jbuilder (>= 2.5)
   letter_opener
@@ -440,7 +385,6 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
-  web_git!
   webmock
 
 RUBY VERSION
