@@ -31,6 +31,12 @@ def needs_volunteer
   end
 end
 
+def need_volunteers
+  needy_propoal_ids = Step.where(:volunteer_id => nil).distinct.pluck(:proposal_id)
+  needy_proposals = Proposal.where(:id => needy_propoal_ids).distinct
+  return needy_proposals
+end
+
 def count_followers
   return Follower.where(:proposal_id => self.id).count
 end
